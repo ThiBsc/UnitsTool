@@ -8,6 +8,13 @@ const HomeScreen = ({ navigation, conversionsData }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const refreshConversionJson = () => {
+    setIsRefreshing(true);
+
+    fetch('https://raw.githubusercontent.com/ThiBsc/UnitsTool/main/src/utils/conversion.json')
+      .then((response) => response.text())
+      .then((json) => console.log(json))
+      .catch((error) => console.error('Unable to fetch conversion.json'))
+      .finally(() => setIsRefreshing(false));
   }
 
   const keyExtractor = (item, index) => item + index;
