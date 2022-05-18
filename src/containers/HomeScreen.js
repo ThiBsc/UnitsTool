@@ -1,26 +1,33 @@
-import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { StyleSheet, View } from 'react-native';
-import { Button } from '@rneui/base';
+import React, { useState } from 'react';
+import ListCategoryItem from 'src/components/ListCategoryItem';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 
 const HomeScreen = ({ navigation, conversionsData }) => {
+
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const refreshConversionJson = () => {
+  }
+
+  const keyExtractor = (item, index) => item + index;
+
+  const renderItem = ({ item }) => (
+    <ListCategoryItem
+      navigation={navigation}
+      conversion={item}
+    />
+  );
+
   return (
     <View style={[ styles.container ]}>
-      {
-        conversionsData.map( (conv, index) => {
-          //console.log('HOMESCREEN', index, conv);
-          return <Button
-                    key={index}
-                    containerStyle={{flex: 1}}
-                    type='solid'
-                    iconPosition='top'
-                    title={conv.title}
-                    icon={<Icon name={conv.icon} size={32} color='white'/>}
-                    onPress={() => navigation.navigate(conv.category)}
-                  />
-        })
-      }
+      <FlatList
+        data={conversionsData}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        onRefresh={refreshConversionJson}
+        refreshing={isRefreshing}
+      />
     </View>
   );
 }

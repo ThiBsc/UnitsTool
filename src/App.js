@@ -8,7 +8,7 @@
 import React from 'react';
 import ConvertScreen from 'src/containers/ConvertScreen';
 import HomeScreen from 'src/containers/HomeScreen';
-import { conversion } from 'src/utils/conversion';
+import conversion from 'src/utils/conversion.json'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -20,7 +20,7 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='Home' options={{title: 'Accueil', headerStyle: {backgroundColor: 'lightskyblue' }, headerTintColor: '#fff'}}>
+          <Stack.Screen name='Home' options={{title: 'Home', headerStyle: {backgroundColor: 'lightskyblue' }, headerTintColor: '#fff'}}>
             {props => <HomeScreen {...props} conversionsData={conversion} />}
           </Stack.Screen>
           {

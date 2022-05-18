@@ -11,9 +11,9 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const [refUnitName, setRefUnitName] = useState(defaultUnitName);
 
-  const keyExtractor = (item, index) => item + index;
-
   const [value, setValue] = useState(0);
+  
+  const keyExtractor = (item, index) => item + index;
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = (item.name == refUnitName);

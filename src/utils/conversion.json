@@ -1,0 +1,103 @@
+[
+    {
+        "category": "distance",
+        "title": "Distance",
+        "icon": "road",
+        "reference": "Centimeter",
+        "units": [
+            {
+                "name": "Millimeter",
+                "symbol": "mm",
+                "formula": "* 10"
+            },
+            {
+                "name": "Centimeter",
+                "symbol": "cm",
+                "formula": "* 1"
+            },
+            {
+                "name": "Meter",
+                "symbol": "m",
+                "formula": "/ 100"
+            },
+            {
+                "name": "Inch",
+                "symbol": "in",
+                "formula": "/ 2.54"
+            },
+            {
+                "name": "Feet",
+                "symbol": "ft",
+                "formula": "/ 30.48"
+            },
+            {
+                "name": "Miles",
+                "symbol": "mi",
+                "formula": "/ 160934"
+            }
+        ]
+    },
+    {
+        "category": "weight",
+        "title": "Weight",
+        "icon": "balance-scale",
+        "reference": "Gram",
+        "units": [
+            {
+                "name": "Gram",
+                "symbol": "g",
+                "formula": "* 1"
+            },
+            {
+                "name": "Milligram",
+                "symbol": "mg",
+                "formula": "* 1000"
+            },
+            {
+                "name": "KiloGram",
+                "symbol": "kg",
+                "formula": "/ 1000"
+            },
+            {
+                "name": "Pounds",
+                "symbol": "lbs",
+                "formula": "/ 454"
+            }
+        ]
+    },
+    {
+        "category": "time",
+        "title": "Time",
+        "icon": "hourglass",
+        "units": []
+    },
+    {
+        "category": "temperature",
+        "title": "Temperature",
+        "icon": "thermometer-half",
+        "reference": "Celsius",
+        "units": [
+            {
+                "name": "Celsius",
+                "symbol": "°C",
+                "formula": "* 1"
+            },
+            {
+                "name": "Fahrenheit",
+                "symbol": "°F",
+                "formula": "* 1.8 + 32"
+            },
+            {
+                "name": "Kelvin",
+                "symbol": "K",
+                "formula": "+ 273.15"
+            }
+        ]
+    },
+    {
+        "category": "liquid",
+        "title": "Liquid",
+        "icon": "tint",
+        "units": []
+    }
+]
