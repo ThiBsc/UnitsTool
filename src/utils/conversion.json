@@ -49,14 +49,14 @@
         "reference": "Gram",
         "units": [
             {
-                "name": "Gram",
-                "symbol": "g",
-                "formula": "* 1"
-            },
-            {
                 "name": "Milligram",
                 "symbol": "mg",
                 "formula": "* 1000"
+            },
+            {
+                "name": "Gram",
+                "symbol": "g",
+                "formula": "* 1"
             },
             {
                 "name": "KiloGram",
