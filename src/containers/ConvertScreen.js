@@ -7,24 +7,24 @@ import { StyleSheet, View , Text, FlatList } from 'react-native';
 
 const ConvertScreen = ({ navigation, conversionData }) => {
 
-  const defaultUnitName = conversionData.units.find(unit => unit.name == conversionData.reference)?.name;
+  const defaultUnit = conversionData.units.find(unit => unit.name == conversionData.reference);
 
-  const [refUnitName, setRefUnitName] = useState(defaultUnitName);
+  const [refUnit, setRefUnit] = useState(defaultUnit);
 
   const [value, setValue] = useState(0);
   
   const keyExtractor = (item, index) => item + index;
 
   const renderItem = ({ item }) => {
-    const isReferenceUnit = (item.name == refUnitName);
-    let unityValue = isReferenceUnit ? value : convert(conversionData.category, refUnitName, item.name, value);
+    const isReferenceUnit = (item.name == refUnit.name);
+    let unityValue = isReferenceUnit ? value : convert(conversionData.category, refUnit.name, item.name, value);
     if (isNaN(unityValue)) unityValue = '?';
   
     return <ListUnitItem
               unit={item}
               value={unityValue}
               isReferenceUnit={isReferenceUnit}
-              setRefUnitName={setRefUnitName}
+              setRefUnit={setRefUnit}
             />
   }
 
@@ -35,6 +35,7 @@ const ConvertScreen = ({ navigation, conversionData }) => {
         <UnitValue
           value={value.toString()}
           setValue={setValue}
+          unit={refUnit}
         />
         {/*<Text>{conversionData.title}</Text>*/}
         <View style={{flex: 1, width: '100%'}}>
