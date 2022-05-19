@@ -105,11 +105,5 @@
         "title": "Liquid",
         "icon": "tint",
         "units": []
-    },
-    {
-        "category": "test",
-        "title": "Test fetch from GitHub raw",
-        "icon": "tint",
-        "units": []
     }
 ]
