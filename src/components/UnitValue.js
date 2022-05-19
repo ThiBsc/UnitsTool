@@ -15,6 +15,7 @@ const UnitValue = ({ value, setValue, unit }) => {
             clearButtonMode='always'
             value={value}
             onChangeText={value => setValue(value)}
+            selectTextOnFocus={true}
             leftIcon={<Icon name='pencil-alt' size={32} color='black'/>}
         />
       </View>

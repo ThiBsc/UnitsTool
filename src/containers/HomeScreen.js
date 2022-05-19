@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ListCategoryItem from 'src/components/ListCategoryItem';
+import EmptyDataComponent from 'src/components/EmptyDataComponent';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 
-const HomeScreen = ({ navigation, conversionsData }) => {
+const HomeScreen = ({ navigation, conversionsData, saveData }) => {
 
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -12,8 +13,8 @@ const HomeScreen = ({ navigation, conversionsData }) => {
 
     fetch('https://raw.githubusercontent.com/ThiBsc/UnitsTool/main/src/utils/conversion.json')
       .then((response) => response.text())
-      .then((json) => console.log(json))
-      .catch((error) => console.error('Unable to fetch conversion.json'))
+      .then((json) => saveData(json))
+      .catch((_) => console.error('Unable to fetch conversion.json'))
       .finally(() => setIsRefreshing(false));
   }
 
@@ -25,7 +26,7 @@ const HomeScreen = ({ navigation, conversionsData }) => {
       conversion={item}
     />
   );
-
+  
   return (
     <View style={[ styles.container ]}>
       <FlatList
@@ -34,6 +35,8 @@ const HomeScreen = ({ navigation, conversionsData }) => {
         keyExtractor={keyExtractor}
         onRefresh={refreshConversionJson}
         refreshing={isRefreshing}
+        ListEmptyComponent={EmptyDataComponent}
+        contentContainerStyle={conversionsData.length === 0 && styles.centerEmptySet}
       />
     </View>
   );
@@ -42,6 +45,11 @@ const HomeScreen = ({ navigation, conversionsData }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  centerEmptySet: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%'
   }
 });
 

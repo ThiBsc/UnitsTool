@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
 import { convert } from 'src/utils/conversion';
@@ -9,8 +10,8 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const defaultUnit = conversionData.units.find(unit => unit.name == conversionData.reference);
 
+  const isInitialized = useRef(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
-
   const [value, setValue] = useState(0);
   
   const keyExtractor = (item, index) => item + index;
@@ -24,9 +25,40 @@ const ConvertScreen = ({ navigation, conversionData }) => {
               unit={item}
               value={unityValue}
               isReferenceUnit={isReferenceUnit}
-              setRefUnit={setRefUnit}
+              setRefUnit={saveCategoryFavorite}
             />
   }
+
+  const loadCategoryFavorite = async () => {
+    try {
+      const value = await AsyncStorage.getItem(`unitstool_${conversionData.category}_favorite`); 
+      if (value !== null) {
+        setRefUnit(JSON.parse(value));
+      }
+    } catch(e) {
+    }
+  }
+
+  const saveCategoryFavorite = async (value) => {
+    try {
+      const jsonStrValue = JSON.stringify(value);
+      await AsyncStorage.setItem(`unitstool_${conversionData.category}_favorite`, jsonStrValue);
+      console.log('biteuh');
+      setRefUnit(value);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!isInitialized.current) {
+      loadCategoryFavorite();
+    }
+
+    return () => {
+      isInitialized.current = true;
+    };
+  }, []);
 
   return (
     <View style={[ styles.container, {
