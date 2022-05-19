@@ -8,7 +8,7 @@
 import React from 'react';
 import ConvertScreen from 'src/containers/ConvertScreen';
 import HomeScreen from 'src/containers/HomeScreen';
-import conversion from 'src/utils/conversion.json'
+import conversion from 'src/utils/conversion.json';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Input } from '@rneui/themed';
 import { Text, View } from 'react-native';
@@ -19,7 +19,7 @@ const UnitValue = ({ value, setValue, unit }) => {
         />
       </View>
       <View style={{flex: 0, flexDirection: 'row', alignItems: 'center', marginRight: 5}}>
-        <Text style={{fontWeight: 'bold', fontSize: 20}}>{unit.symbol}</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 20}}>{unit?.symbol ?? ''}</Text>
       </View>
     </View>
   );
