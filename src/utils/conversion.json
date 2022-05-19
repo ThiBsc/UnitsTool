@@ -21,6 +21,11 @@
                 "formula": "/ 100"
             },
             {
+                "name": "Kilometer",
+                "symbol": "km",
+                "formula": "/ 100000"
+            },
+            {
                 "name": "Inch",
                 "symbol": "in",
                 "formula": "/ 2.54"
