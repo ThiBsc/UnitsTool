@@ -43,7 +43,6 @@ const ConvertScreen = ({ navigation, conversionData }) => {
     try {
       const jsonStrValue = JSON.stringify(value);
       await AsyncStorage.setItem(`unitstool_${conversionData.category}_favorite`, jsonStrValue);
-      console.log('biteuh');
       setRefUnit(value);
     } catch (e) {
       console.error(e);
