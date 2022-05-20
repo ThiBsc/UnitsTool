@@ -104,7 +104,7 @@
         "category": "liquid",
         "title": "Liquid",
         "icon": "tint",
-        "reference": "Liter"
+        "reference": "Liter",
         "units": [
             {
                 "name": "Milliliter",
