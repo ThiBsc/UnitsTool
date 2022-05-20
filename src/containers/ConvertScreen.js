@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
-import { convert } from 'src/utils/conversion';
+import { convert, getlowestfraction } from 'src/utils/conversion';
 import { StyleSheet, View , Text, FlatList } from 'react-native';
 
 
@@ -20,6 +20,13 @@ const ConvertScreen = ({ navigation, conversionData }) => {
     const isReferenceUnit = (item.name == refUnit.name);
     let unityValue = isReferenceUnit ? value : convert(conversionData, refUnit.name, item.name, value);
     if (isNaN(unityValue)) unityValue = '?';
+
+    if (item.isFraction && unityValue !== '?') {
+      const fraction = getlowestfraction(unityValue);
+      // If displayable as a readable fraction
+      if (fraction.match(/^(\d+|\d\/\d)$/))
+        unityValue = fraction;
+    }
   
     return <ListUnitItem
               unit={item}

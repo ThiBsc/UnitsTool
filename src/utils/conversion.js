@@ -21,6 +21,31 @@ export const convert = (category, unitNameSrc, unitNameDest, value) => {
     return twoDecimals(newValue);
 }
 
+/* https://stackoverflow.com/questions/14002113/how-to-simplify-a-decimal-into-the-smallest-possible-fraction */
+export const getlowestfraction = (value) => {
+    // 1.0E-2 because itès rounded to 2 decimals
+    let eps = 1.0E-2;
+    let h, h1, h2, k, k1, k2, a, x;
+
+    x = value;
+    a = Math.floor(x);
+    h1 = 1;
+    k1 = 0;
+    h = a;
+    k = 1;
+
+    while (x-a > eps*k*k) {
+        x = 1/(x-a);
+        a = Math.floor(x);
+        h2 = h1; h1 = h;
+        k2 = k1; k1 = k;
+        h = h2 + a*h1;
+        k = k2 + a*k1;
+    }
+
+    return `${k === 1 ? h : h + "/" + k}`;
+}
+
 const twoDecimals = (value) => {
     let log10 = value ? Math.floor(Math.log10(value)) : 0;
     let div = log10 < 0 ? Math.pow(10, 1 - log10) : 100;

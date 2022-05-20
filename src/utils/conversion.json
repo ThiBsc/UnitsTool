@@ -71,12 +71,6 @@
         ]
     },
     {
-        "category": "time",
-        "title": "Time",
-        "icon": "hourglass",
-        "units": []
-    },
-    {
         "category": "temperature",
         "title": "Temperature",
         "icon": "thermometer-half",
@@ -122,6 +116,12 @@
                 "formula": "* 1"
             },
             {
+                "name": "Cup",
+                "symbol": "🥣",
+                "formula": "* 4.227",
+                "isFraction": true
+            },
+            {
                 "name": "US fl oz",
                 "symbol": "oz",
                 "formula": "* 33.814"
@@ -130,6 +130,24 @@
                 "name": "US Gallon",
                 "symbol": "gal",
                 "formula": "/ 3.785"
+            }
+        ]
+    },
+    {
+        "category": "surface",
+        "title": "Surface",
+        "icon": "square",
+        "reference": "Square meter",
+        "units": [
+            {
+                "name": "Square meter",
+                "symbol": "m²",
+                "formula": "* 1"
+            },
+            {
+                "name": "Square feet",
+                "symbol": "pi²",
+                "formula": "* 10.764"
             }
         ]
     }
