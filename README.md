@@ -16,6 +16,10 @@ An application to convert units
 > You just have to Pull down the list in the `Home` screen 👇
 
 ## Contribute
+
+### Helping for a beautiful app icon
+if someone can make a beautiful icon for this app, it will be very appreciate !
+
 ### By completing `conversion.json`
 This file is the core of the application, it describe what is supposed to be displayed on the `Home` page, on each element in the list and the conversion formula to use.
 
