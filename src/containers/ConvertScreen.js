@@ -18,7 +18,7 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = (item.name == refUnit.name);
-    let unityValue = isReferenceUnit ? value : convert(conversionData.category, refUnit.name, item.name, value);
+    let unityValue = isReferenceUnit ? value : convert(conversionData, refUnit.name, item.name, value);
     if (isNaN(unityValue)) unityValue = '?';
   
     return <ListUnitItem
@@ -32,7 +32,7 @@ const ConvertScreen = ({ navigation, conversionData }) => {
   const loadCategoryFavorite = async () => {
     try {
       const value = await AsyncStorage.getItem(`unitstool_${conversionData.category}_favorite`); 
-      if (value !== null) {
+      if (value !== null && value.length > 0) {
         setRefUnit(JSON.parse(value));
       }
     } catch(e) {

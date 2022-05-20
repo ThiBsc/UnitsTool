@@ -1,7 +1,5 @@
-import conversion from 'src/utils/conversion.json';
-
 export const convert = (category, unitNameSrc, unitNameDest, value) => {
-    const categoryObj = conversion.find(c => c.category === category);
+    const categoryObj = category;
     const reference = categoryObj.reference;
 
     const unitSrc = categoryObj.units.find(u => u.name === unitNameSrc);

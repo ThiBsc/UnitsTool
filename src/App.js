@@ -62,7 +62,7 @@ const App = () => {
             {props => <HomeScreen {...props} conversionsData={usedConversions} saveData={storeConversionData} />}
           </Stack.Screen>
           {
-            conversion.map( (conv, index) => {
+            usedConversions.map( (conv, index) => {
               return <Stack.Screen
                         key={index}
                         name={conv.category}
