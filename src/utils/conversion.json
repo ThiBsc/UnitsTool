@@ -104,6 +104,33 @@
         "category": "liquid",
         "title": "Liquid",
         "icon": "tint",
-        "units": []
+        "reference": "Liter",
+        "units": [
+            {
+                "name": "Milliliter",
+                "symbol": "ml",
+                "formula": "* 1000"
+            },
+            {
+                "name": "Centiliter",
+                "symbol": "cl",
+                "formula": "* 100"
+            },
+            {
+                "name": "Liter",
+                "symbol": "l",
+                "formula": "* 1"
+            },
+            {
+                "name": "US fl oz",
+                "symbol": "oz",
+                "formula": "* 33.814"
+            },
+            {
+                "name": "US Gallon",
+                "symbol": "gal",
+                "formula": "/ 3.785"
+            }
+        ]
     }
 ]
