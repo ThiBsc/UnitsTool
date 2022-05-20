@@ -124,12 +124,12 @@
             {
                 "name": "US fl oz",
                 "symbol": "oz",
-                "formula": "* 33,814"
+                "formula": "* 33.814"
             },
             {
                 "name": "US Gallon",
                 "symbol": "gal",
-                "formula": "/ 3,785"
+                "formula": "/ 3.785"
             }
         ]
     }
