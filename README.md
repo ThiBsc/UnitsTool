@@ -6,6 +6,15 @@ An application to convert units
     <img alt="temperature" src="screenshot/temperature.png" style="width: 30%; height: 30%;"/>
 </div>
 
+## How to use
+
+* Select the category you want by touching it
+* Select your favorite unit with a `long press`
+* Enter your value to convert
+
+> If the `conversion.json` file is updated, no need to update the application,  
+> You just have to Pull down the list in the `Home` screen 👇
+
 ## Contribute
 ### By completing `conversion.json`
 This file is the core of the application, it describe what is supposed to be displayed on the `Home` page, on each element in the list and the conversion formula to use.
