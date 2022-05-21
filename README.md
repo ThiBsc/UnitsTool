@@ -6,6 +6,9 @@ An application to convert units
     <img alt="temperature" src="screenshot/temperature.png" style="width: 30%; height: 30%;"/>
 </div>
 
+## Privacy
+This application does not store or use any data from the user 
+
 ## How to use
 
 * Select the category you want by touching it
