@@ -146,7 +146,7 @@
             },
             {
                 "name": "Square feet",
-                "symbol": "pi²",
+                "symbol": "ft²",
                 "formula": "* 10.764"
             }
         ]
