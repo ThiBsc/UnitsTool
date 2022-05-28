@@ -29,7 +29,6 @@ i18n
       fr,
       es
     },
-    lng: 'en',
     fallbackLng: 'en',
     compatibilityJSON: 'v3'
   });
