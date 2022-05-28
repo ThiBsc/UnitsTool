@@ -1,5 +1,8 @@
 # UnitsTool
+[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)  
 An application to convert units
+
+Available languages : 🇬🇧, 🇫🇷, 🇪🇸
 
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <img alt="home" src="screenshot/home.png" style="width: 30%; height: 30%;"/>
