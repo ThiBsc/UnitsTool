@@ -36,6 +36,11 @@
                 "formula": "/ 30.48"
             },
             {
+                "name": "Yard",
+                "symbol": "yd",
+                "formula": "/ 91.44"
+            },
+            {
                 "name": "Miles",
                 "symbol": "mi",
                 "formula": "/ 160934"
@@ -148,6 +153,11 @@
                 "name": "Square feet",
                 "symbol": "ft²",
                 "formula": "* 10.764"
+            },
+            {
+                "name": "Acre",
+                "symbol": "ac",
+                "formula": "/ 4046.8564224"
             }
         ]
     }
