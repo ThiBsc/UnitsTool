@@ -48,7 +48,7 @@ const App = () => {
 
   const initLanguage = async () => {
     const iso = await AsyncStorage.getItem('unitstool_language');
-    if (iso !== null) {
+    if (iso !== null && iso !== i18n.language) {
       changeLanguage(iso);
     }
   }
