@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
 import { convert, getlowestfraction } from 'src/utils/conversion';
-import { StyleSheet, View , Text, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 
 
 const ConvertScreen = ({ navigation, conversionData }) => {

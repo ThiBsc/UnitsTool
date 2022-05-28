@@ -2,8 +2,12 @@ import React from 'react';
 import TouchableScale from 'react-native-touchable-scale';
 import { Avatar, ListItem } from "@rneui/themed";
 import { Text } from "react-native";
+import { useTranslation } from 'react-i18next';
 
 const ListCategoryItem = ({ navigation, conversion }) => {
+
+  const { t } = useTranslation();
+
   return (
     <ListItem
       Component={TouchableScale}
@@ -19,10 +23,10 @@ const ListCategoryItem = ({ navigation, conversion }) => {
         />
         <ListItem.Content>
           <ListItem.Title>
-            <Text>{conversion.title}</Text>
+            <Text>{t(conversion.title)}</Text>
           </ListItem.Title>
           <ListItem.Subtitle>
-            <Text style={{color: 'grey'}}>({conversion.units.length} units)</Text>
+            <Text style={{color: 'grey'}}>({conversion.units.length} {t('units')})</Text>
           </ListItem.Subtitle>
         </ListItem.Content>
     </ListItem>

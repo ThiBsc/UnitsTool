@@ -1,6 +1,4 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Input } from '@rneui/themed';
 import { Text, View } from 'react-native';
 
 

@@ -1,0 +1,42 @@
+{
+    "translation": {
+        "home": "Hogar",
+        "value": "Valor",
+        "units": "unidades",
+
+        "Distance": "Distancia",
+        "Weight": "Peso",
+        "Temperature": "Temperatura",
+        "Liquid": "Líquido",
+        "Surface": "Superficie",
+
+        "Millimeter": "Milímetro",
+        "Centimeter": "Centímetro",
+        "Meter": "Metro",
+        "Kilometer": "Kilómetro",
+        "Inch": "Pulgada",
+        "Feet": "Pies",
+        "Yard": "Yarda",
+        "Miles": "Millas",
+
+        "Milligram": "Miligramo",
+        "Gram": "Gramo",
+        "Kilogram": "Kilogramo",
+        "Pounds": "Libras",
+
+        "Celsius": "Celsius",
+        "Fahrenheit": "Fahrenheit",
+        "Kelvin": "Kelvin",
+
+        "Milliliter": "Mililitro",
+        "Centiliter": "Centilitro",
+        "Liter": "Litro",
+        "Cup": "Taza",
+        "US fl oz": "US fl oz",
+        "US Gallon": "US Galón",
+
+        "Square meter": "Metro cuadrado",
+        "Square feet": "Pies cuadrado",
+        "Acre": "Acre"
+    }
+}

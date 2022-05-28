@@ -1,0 +1,17 @@
+[
+    {
+        "iso": "en",
+        "name": "English",
+        "emoji": "🇬🇧"
+    },
+    {
+        "iso": "fr",
+        "name": "Français",
+        "emoji": "🇫🇷"
+    },
+    {
+        "iso": "es",
+        "name": "Español",
+        "emoji": "🇪🇸"
+    }
+]

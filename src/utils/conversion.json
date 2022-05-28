@@ -64,7 +64,7 @@
                 "formula": "* 1"
             },
             {
-                "name": "KiloGram",
+                "name": "Kilogram",
                 "symbol": "kg",
                 "formula": "/ 1000"
             },

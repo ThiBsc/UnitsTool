@@ -2,15 +2,18 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Input } from '@rneui/themed';
 import { Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 
 const UnitValue = ({ value, setValue, unit }) => {
+
+  const { t } = useTranslation();
 
   return (
     <View style={{flex: 0, flexDirection: 'row', height: 60}}>
       <View style={{flex: 9}}>
         <Input
-            placeholder='Valeur'
+            placeholder={t('value')}
             keyboardType='numeric'
             clearButtonMode='always'
             value={value}
