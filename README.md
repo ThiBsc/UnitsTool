@@ -6,6 +6,7 @@ Available languages : 🇬🇧, 🇫🇷, 🇪🇸
 
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <img alt="home" src="screenshot/home.png" style="width: 30%; height: 30%;"/>
+    <img alt="languages" src="screenshot/languages.png" style="width: 30%; height: 30%;"/>
     <img alt="temperature" src="screenshot/temperature.png" style="width: 30%; height: 30%;"/>
 </div>
 
