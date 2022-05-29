@@ -1,5 +1,5 @@
 An open source application to convert units.
 - Select the category you want by touching it
-- Select your favorite unit with a long press
+- Select your favorite unit by touching the star
 - Enter your value to convert
 

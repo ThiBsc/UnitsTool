@@ -16,7 +16,7 @@ This application does not store or use any data from the user
 ## How to use
 
 * Select the category you want by touching it
-* Select your favorite unit with a `long press`
+* Select your favorite unit by touching the star
 * Enter your value to convert
 
 > If the `conversion.json` file is updated, no need to update the application,  
