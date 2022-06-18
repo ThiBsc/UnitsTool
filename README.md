@@ -1,8 +1,10 @@
 # UnitsTool
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)  
-An application to convert units
-
+An application to convert units  
 Available languages : 🇬🇧, 🇫🇷, 🇪🇸
+
+[<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="75"/>](https://play.google.com/store/apps/details?id=com.unitstool&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/en/packages/com.unitstool/)
 
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <img alt="home" src="screenshot/home.png" style="width: 30%; height: 30%;"/>
