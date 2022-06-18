@@ -160,5 +160,24 @@
                 "formula": "/ 4046.8564224"
             }
         ]
+    },
+    {
+        "category": "chemistry",
+        "title": "Chemistry",
+        "icon": "medkit",
+        "reference": "Millimole per liter",
+        "units": [
+            {
+                "name": "Millimole per liter",
+                "symbol": "mmol/L",
+                "formula": "* 1"
+            },
+            {
+                "name": "Milligram per deciliter",
+                "symbol": "mg/dL",
+                "formula": "* 18.018",
+                "reverse_formula": "* 0.0555"
+            }
+        ]
     }
 ]

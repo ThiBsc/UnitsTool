@@ -9,6 +9,7 @@
         "Temperature": "Température",
         "Liquid": "Liquide",
         "Surface": "Superficie",
+        "Chemistry": "Chimie",
 
         "Millimeter": "Millimètre",
         "Centimeter": "Centimètre",
@@ -37,6 +38,9 @@
 
         "Square meter": "Mètre carré",
         "Square feet": "Pieds carré",
-        "Acre": "Acre"
+        "Acre": "Acre",
+
+        "Millimole per liter": "Millimole par litre",
+        "Milligram per deciliter": "Milligramme par décilitre"
     }
 }
