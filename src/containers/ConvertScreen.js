@@ -38,9 +38,12 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const loadCategoryFavorite = async () => {
     try {
-      const value = await AsyncStorage.getItem(`unitstool_${conversionData.category}_favorite`); 
+      const value = await AsyncStorage.getItem(`unitstool_${conversionData.category}_favorite`);
       if (value !== null && value.length > 0) {
-        setRefUnit(JSON.parse(value));
+        const savedUnit = JSON.parse(value);
+        // check if favourite init exist in conversionData
+        const exist = conversionData.units.some(unit => unit.name == savedUnit.name);
+        setRefUnit(exist ? savedUnit : defaultUnit);
       }
     } catch(e) {
     }
