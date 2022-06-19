@@ -8,7 +8,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ConvertScreen from 'src/containers/ConvertScreen';
-import LanguageMenu from 'src/components/LanguageMenu';
+import MainMenu from 'src/components/MainMenu';
 import HomeScreen from 'src/containers/HomeScreen';
 import i18n from 'i18next';
 import conversion from 'src/utils/conversion.json';
@@ -20,6 +20,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MenuProvider } from 'react-native-popup-menu';
+import { ThemeProvider } from '@rneui/themed';
 
 i18n
   .use(initReactI18next)
@@ -40,6 +41,7 @@ const App = () => {
   const isInitialized = useRef(false);
   const { t } = useTranslation();
   const [usedConversions, setUsedConversions] = useState(conversion);
+  const [darkMode, setDarkMode] = useState(false);
 
   const changeLanguage = async (iso) => {
     await AsyncStorage.setItem('unitstool_language', iso);
@@ -90,35 +92,37 @@ const App = () => {
   return (
     <Suspense fallback="Loading...">
       <SafeAreaProvider>
-        <MenuProvider>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name='Home'
-                options={{
-                  title: t('home'),
-                  headerStyle: {backgroundColor: 'lightskyblue' },
-                  headerTintColor: '#fff',
-                  headerRight: () => (
-                    <LanguageMenu currentLanguage={i18n.language} changeLanguage={changeLanguage}/>
-                  )
-                }}
-              >
-                {props => <HomeScreen {...props} conversionsData={usedConversions} saveData={storeConversionData} />}
-              </Stack.Screen>
-              {
-                usedConversions.map( (conv, index) => {
-                  return <Stack.Screen
-                            key={index}
-                            name={conv.category}
-                            options={{title: t(conv.title), headerStyle: {backgroundColor: 'lightskyblue' }, headerTintColor: '#fff'}}>
-                              {props => <ConvertScreen {...props} conversionData={conv} />}
-                          </Stack.Screen>
-                })
-              }
-            </Stack.Navigator>
-          </NavigationContainer>
-        </MenuProvider>
+        <ThemeProvider>
+          <MenuProvider>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name='Home'
+                  options={{
+                    title: t('home'),
+                    headerStyle: {backgroundColor: 'lightskyblue' },
+                    headerTintColor: '#fff',
+                    headerRight: () => (
+                      <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={darkMode} setDarkMode={setDarkMode}/>
+                    )
+                  }}
+                >
+                  {props => <HomeScreen {...props} conversionsData={usedConversions} saveData={storeConversionData} />}
+                </Stack.Screen>
+                {
+                  usedConversions.map( (conv, index) => {
+                    return <Stack.Screen
+                              key={index}
+                              name={conv.category}
+                              options={{title: t(conv.title), headerStyle: {backgroundColor: 'lightskyblue' }, headerTintColor: '#fff'}}>
+                                {props => <ConvertScreen {...props} conversionData={conv} />}
+                            </Stack.Screen>
+                  })
+                }
+              </Stack.Navigator>
+            </NavigationContainer>
+          </MenuProvider>
+        </ThemeProvider>
       </SafeAreaProvider>
     </Suspense>
   );

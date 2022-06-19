@@ -165,15 +165,15 @@
         "category": "chemistry",
         "title": "Chemistry",
         "icon": "medkit",
-        "reference": "Millimole per liter",
+        "reference": "Millimole per liter (glucose)",
         "units": [
             {
-                "name": "Millimole per liter",
+                "name": "Millimole per liter (glucose)",
                 "symbol": "mmol/L",
                 "formula": "* 1"
             },
             {
-                "name": "Milligram per deciliter",
+                "name": "Milligram per deciliter (glucose)",
                 "symbol": "mg/dL",
                 "formula": "* 18.018",
                 "reverse_formula": "* 0.0555"
