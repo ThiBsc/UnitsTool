@@ -34,7 +34,7 @@ const HomeScreen = ({ navigation, conversionsData, saveData }) => {
   return (
     <View style={[ styles.container, {backgroundColor: bgColor}]}>
       <FlatList
-        data={[]}
+        data={conversionsData}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onRefresh={refreshConversionJson}
