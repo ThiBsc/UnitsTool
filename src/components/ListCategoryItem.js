@@ -8,10 +8,12 @@ const ListCategoryItem = ({ navigation, conversion }) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
+  const bgColor = theme.mode === 'light' ? theme.colors.background : theme.colors.searchBg;
+
   return (
     <ListItem
       Component={TouchableScale}
-      containerStyle={{ borderRadius: 10, marginLeft: 10, marginRight: 10, marginTop: 5, marginBottom: 5 }}
+      containerStyle={{ borderRadius: 10, marginLeft: 10, marginRight: 10, marginTop: 5, marginBottom: 5, backgroundColor: bgColor }}
       onPress={() => navigation.navigate(conversion.category)}
       pad={20}
     >

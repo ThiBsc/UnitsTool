@@ -11,13 +11,7 @@ const MainMenu = ({ currentLanguage, changeLanguage, darkMode, setDarkMode }) =>
 
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const { _, setMode } = useThemeMode();
   const keyExtractor = (item, index) => item + index;
-
-  const setThemeMode = (dark) => {
-    setMode(dark ? 'dark' : 'light');
-    setDarkMode(dark);
-  }
 
   const renderItem = ({ item }) => {
     const isCurrentLanguage = item.iso === currentLanguage;
@@ -29,14 +23,14 @@ const MainMenu = ({ currentLanguage, changeLanguage, darkMode, setDarkMode }) =>
             }}
             onSelect={value => changeLanguage(value)}
           >
-            <Text style={{fontSize: 20}}>{`${item.emoji} ${item.name}`}</Text>
+            <Text style={{fontSize: 24}}>{`${item.emoji} ${item.name}`}</Text>
           </MenuOption>
   }
 
   return (
     <View>
       <Menu>
-        <MenuTrigger children={<Icon name='bars' size={32} color='steelblue'/>}/>
+        <MenuTrigger children={<Icon name='bars' size={32} color={theme.colors.white}/>}/>
         <MenuOptions style={{backgroundColor: theme.colors.white}}>
           <FlatList
             data={translation}
@@ -44,10 +38,10 @@ const MainMenu = ({ currentLanguage, changeLanguage, darkMode, setDarkMode }) =>
             keyExtractor={keyExtractor}
           />
           <Divider/>
-          <MenuOption onSelect={() => setThemeMode(!darkMode)}>
+          <MenuOption onSelect={() => setDarkMode(!darkMode)}>
             <View style={{flexDirection: 'row'}}>
-              <Icon name={darkMode ? 'sun' : 'moon'} size={24} color={darkMode ? 'yellow' : 'black'} solid/>
-              <Text style={{fontSize: 20}}>{' '}{t(darkMode ? 'lightmode' : 'darkmode')}</Text>
+              <Icon name={darkMode ? 'sun' : 'moon'} size={28} color={theme.colors.black} solid/>
+              <Text style={{fontSize: 24}}>{' '}{t(darkMode ? 'lightmode' : 'darkmode')}</Text>
             </View>
           </MenuOption>
         </MenuOptions>

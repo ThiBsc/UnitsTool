@@ -11,6 +11,7 @@ import es from 'src/locales/es.json';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { NavigationContainer } from '@react-navigation/native';
+import { useTheme, useThemeMode } from '@rneui/themed';
 
 i18n
   .use(initReactI18next)
@@ -30,8 +31,26 @@ const RootNavigation = ({ value, setValue, unit }) => {
 
   const isInitialized = useRef(false);
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const { _, setMode } = useThemeMode();
   const [usedConversions, setUsedConversions] = useState(conversion);
   const [darkMode, setDarkMode] = useState(false);
+
+  const setThemeMode = async (dark) => {
+    const theme = dark ? 'dark' : 'light';
+    await AsyncStorage.setItem('unitstool_theme', theme);
+    setMode(theme);
+    setDarkMode(dark);
+  }
+
+  const initThemeMode = async () => {
+    const theme = await AsyncStorage.getItem('unitstool_theme');
+    if (theme !== null) {
+      const dark = theme === 'dark';
+      setMode(theme);
+      setDarkMode(dark);
+    }
+  }
 
   const changeLanguage = async (iso) => {
     await AsyncStorage.setItem('unitstool_language', iso);
@@ -72,6 +91,7 @@ const RootNavigation = ({ value, setValue, unit }) => {
     if (!isInitialized.current) {
       initLanguage();
       initData();
+      initThemeMode();
     }
 
     return () => {
@@ -86,10 +106,10 @@ const RootNavigation = ({ value, setValue, unit }) => {
           name='Home'
           options={{
             title: t('home'),
-            headerStyle: {backgroundColor: 'lightskyblue' },
-            headerTintColor: '#fff',
+            headerStyle: {backgroundColor: theme.colors.primary },
+            headerTintColor: theme.colors.white,
             headerRight: () => (
-                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={darkMode} setDarkMode={setDarkMode}/>
+                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={darkMode} setDarkMode={setThemeMode}/>
             )
           }}
         >
@@ -100,7 +120,7 @@ const RootNavigation = ({ value, setValue, unit }) => {
           return <Stack.Screen
                     key={index}
                     name={conv.category}
-                    options={{title: t(conv.title), headerStyle: {backgroundColor: 'lightskyblue' }, headerTintColor: '#fff'}}>
+                    options={{title: t(conv.title), headerStyle: {backgroundColor: theme.colors.primary }, headerTintColor: theme.colors.white}}>
                     {props => <ConvertScreen {...props} conversionData={conv} />}
                   </Stack.Screen>
           })
