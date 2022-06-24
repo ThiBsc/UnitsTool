@@ -4,6 +4,7 @@ import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
 import { convert, getlowestfraction } from 'src/utils/conversion';
 import { StyleSheet, View, FlatList } from 'react-native';
+import { useTheme } from '@rneui/themed';
 
 
 const ConvertScreen = ({ navigation, conversionData }) => {
@@ -13,6 +14,9 @@ const ConvertScreen = ({ navigation, conversionData }) => {
   const isInitialized = useRef(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
   const [value, setValue] = useState(0);
+  const { theme } = useTheme();
+
+  const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
   
   const keyExtractor = (item, index) => item + index;
 
@@ -71,7 +75,8 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   return (
     <View style={[ styles.container, {
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: bgColor
     }]}>
         <UnitValue
           value={value.toString()}

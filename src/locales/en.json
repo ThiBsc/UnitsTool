@@ -1,6 +1,8 @@
 {
     "translation": {
         "home": "Home",
-        "value": "Value"
+        "value": "Value",
+        "lightmode": "Light mode",
+        "darkmode": "Dark mode"
     }
 }

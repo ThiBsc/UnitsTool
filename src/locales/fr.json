@@ -3,6 +3,8 @@
         "home": "Accueil",
         "value": "Valeur",
         "units": "unités",
+        "lightmode": "Mode clair",
+        "darkmode": "Mode sombre",
 
         "Distance": "Distance",
         "Weight": "Poids",
@@ -40,7 +42,7 @@
         "Square feet": "Pieds carré",
         "Acre": "Acre",
 
-        "Millimole per liter": "Millimole par litre",
-        "Milligram per deciliter": "Milligramme par décilitre"
+        "Millimole per liter (glucose)": "Millimole par litre (glucose)",
+        "Milligram per deciliter (glucose)": "Milligramme par décilitre (glucose)"
     }
 }

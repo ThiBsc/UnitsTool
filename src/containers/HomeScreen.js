@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import ListCategoryItem from 'src/components/ListCategoryItem';
 import EmptyDataComponent from 'src/components/EmptyDataComponent';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { useTheme } from '@rneui/themed';
 
 
 const HomeScreen = ({ navigation, conversionsData, saveData }) => {
 
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { theme } = useTheme();
+
+  const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
 
   const refreshConversionJson = () => {
     setIsRefreshing(true);
@@ -28,7 +32,7 @@ const HomeScreen = ({ navigation, conversionsData, saveData }) => {
   );
   
   return (
-    <View style={[ styles.container ]}>
+    <View style={[ styles.container, {backgroundColor: bgColor}]}>
       <FlatList
         data={conversionsData}
         renderItem={renderItem}
@@ -45,6 +49,7 @@ const HomeScreen = ({ navigation, conversionsData, saveData }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 4
   },
   centerEmptySet: {
     justifyContent: 'center',
