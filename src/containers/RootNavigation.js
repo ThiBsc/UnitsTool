@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { NavigationContainer } from '@react-navigation/native';
 import { useTheme, useThemeMode } from '@rneui/themed';
+import { version } from '../../package.json';
 
 i18n
   .use(initReactI18next)
@@ -64,16 +65,29 @@ const RootNavigation = ({ value, setValue, unit }) => {
     }
   }
 
+  const isNewVersion = async () => {
+    const currentVersion = await AsyncStorage.getItem('unitstool_version');
+    const isNew = currentVersion === null || currentVersion < version;
+    if (isNew)
+      await AsyncStorage.setItem('unitstool_version', version);
+    return isNew;
+  }
+
   const initData = async () => {
     try {
-      const value = await AsyncStorage.getItem('unitstool_conversionDataJson');
-      if(value === null) {
+      // Force to use the conversion file of the last version after an update
+      if (await isNewVersion()) {
         storeConversionData(JSON.stringify(conversion));
       } else {
-        storeConversionData(value);
+        const value = await AsyncStorage.getItem('unitstool_conversionDataJson');
+        if(value === null) {
+          storeConversionData(JSON.stringify(conversion));
+        } else {
+          storeConversionData(value);
+        }
       }
     } catch(e) {
-      storeConversionData(conversion);
+      storeConversionData(JSON.stringify(conversion));
     }
   }
 
