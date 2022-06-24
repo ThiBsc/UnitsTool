@@ -11,6 +11,7 @@
         "Temperature": "Température",
         "Liquid": "Liquide",
         "Surface": "Superficie",
+        "Volume": "Volume",
         "Chemistry": "Chimie",
 
         "Millimeter": "Millimètre",
@@ -25,6 +26,7 @@
         "Milligram": "Milligramme",
         "Gram": "Gramme",
         "Kilogram": "Kilogramme",
+        "Ton": "Tonne",
         "Pounds": "Livres",
 
         "Celsius": "Celsius",
@@ -38,9 +40,17 @@
         "US fl oz": "US fl oz",
         "US Gallon": "US Gallon",
 
+        "Square centimeter": "Centimètre carré",
         "Square meter": "Mètre carré",
         "Square feet": "Pieds carré",
+        "Hectare": "Hectare",
         "Acre": "Acre",
+
+        "Cubic centimeter": "Centimètre cube",
+        "Cubic meter": "Mètre cube",
+        "Cubic inch": "Pouce cube",
+        "Cubic feet": "Pieds cube",
+        "Cubic yard": "Yard cube",
 
         "Millimole per liter (glucose)": "Millimole par litre (glucose)",
         "Milligram per deciliter (glucose)": "Milligramme par décilitre (glucose)"

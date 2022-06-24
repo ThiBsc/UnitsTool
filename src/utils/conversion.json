@@ -2,7 +2,7 @@
     {
         "category": "distance",
         "title": "Distance",
-        "icon": "road",
+        "icon": "ruler",
         "reference": "Centimeter",
         "units": [
             {
@@ -67,6 +67,11 @@
                 "name": "Kilogram",
                 "symbol": "kg",
                 "formula": "/ 1000"
+            },
+            {
+                "name": "Ton",
+                "symbol": "t",
+                "formula": "/ 1000000"
             },
             {
                 "name": "Pounds",
@@ -145,6 +150,11 @@
         "reference": "Square meter",
         "units": [
             {
+                "name": "Square centimeter",
+                "symbol": "cm²",
+                "formula": "* 10000"
+            },
+            {
                 "name": "Square meter",
                 "symbol": "m²",
                 "formula": "* 1"
@@ -155,6 +165,11 @@
                 "formula": "* 10.764"
             },
             {
+                "name": "Hectare",
+                "symbol": "ha",
+                "formula": "/ 10000"
+            },
+            {
                 "name": "Acre",
                 "symbol": "ac",
                 "formula": "/ 4046.8564224"
@@ -162,9 +177,42 @@
         ]
     },
     {
+        "category": "volume",
+        "title": "Volume",
+        "icon": "cube",
+        "reference": "Cubic meter",
+        "units": [
+            {
+                "name": "Cubic centimeter",
+                "symbol": "cm³",
+                "formula": "* 1000000"
+            },
+            {
+                "name": "Cubic meter",
+                "symbol": "m³",
+                "formula": "* 1"
+            },
+            {
+                "name": "Cubic inch",
+                "symbol": "in³",
+                "formula": "* 61023.7441"
+            },
+            {
+                "name": "Cubic feet",
+                "symbol": "ft³",
+                "formula": "* 35.3146667"
+            },
+            {
+                "name": "Cubic yard",
+                "symbol": "yd³",
+                "formula": "* 1.308"
+            }
+        ]
+    },
+    {
         "category": "chemistry",
         "title": "Chemistry",
-        "icon": "medkit",
+        "icon": "vial",
         "reference": "Millimole per liter (glucose)",
         "units": [
             {
