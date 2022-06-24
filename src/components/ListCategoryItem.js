@@ -1,6 +1,7 @@
 import React from 'react';
+import { Icon } from "@rneui/themed";
 import TouchableScale from 'react-native-touchable-scale';
-import { Avatar, ListItem, Text, useTheme } from "@rneui/themed";
+import { ListItem, Text, useTheme } from "@rneui/themed";
 import { useTranslation } from 'react-i18next';
 
 const ListCategoryItem = ({ navigation, conversion }) => {
@@ -17,20 +18,15 @@ const ListCategoryItem = ({ navigation, conversion }) => {
       onPress={() => navigation.navigate(conversion.category)}
       pad={20}
     >
-        <Avatar
-          size={38}
-          rounded
-          icon={{ name: conversion.icon, type: 'font-awesome', color: 'white' }}
-          containerStyle={{ backgroundColor: 'dodgerblue' }}
-        />
-        <ListItem.Content>
-          <ListItem.Title>
-            <Text>{t(conversion.title)}</Text>
-          </ListItem.Title>
-          <ListItem.Subtitle>
-            <Text style={{color: theme.colors.grey2}}>({conversion.units.length} {t('units')})</Text>
-          </ListItem.Subtitle>
-        </ListItem.Content>
+      <Icon name={conversion.icon} size={18} color='dodgerblue' type='font-awesome-5' containerStyle={{margin: 0}} reverse/>
+      <ListItem.Content>
+        <ListItem.Title>
+          <Text>{t(conversion.title)}</Text>
+        </ListItem.Title>
+        <ListItem.Subtitle>
+          <Text style={{color: theme.colors.grey2}}>({conversion.units.length} {t('units')})</Text>
+        </ListItem.Subtitle>
+      </ListItem.Content>
     </ListItem>
   );
 }
