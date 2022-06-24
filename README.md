@@ -7,9 +7,10 @@ Available languages : 🇬🇧, 🇫🇷, 🇪🇸
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/packages/com.unitstool/)
 
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-    <img alt="home" src="screenshot/home.png" style="width: 30%; height: 30%;"/>
-    <img alt="languages" src="screenshot/languages.png" style="width: 30%; height: 30%;"/>
-    <img alt="temperature" src="screenshot/temperature.png" style="width: 30%; height: 30%;"/>
+    <img alt="home" src="screenshot/home.png" style="width: 25%; height: 25%;"/>
+    <img alt="languages" src="screenshot/languages.png" style="width: 25%; height: 25%;"/>
+    <img alt="temperature" src="screenshot/category.png" style="width: 25%; height: 25%;"/>
+    <img alt="temperature" src="screenshot/darkmode.png" style="width: 25%; height: 25%;"/>
 </div>
 
 ## Privacy
