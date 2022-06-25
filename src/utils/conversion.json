@@ -227,5 +227,10 @@
                 "reverse_formula": "* 0.0555"
             }
         ]
+    },
+    {
+        "category": "currency",
+        "title": "Currency",
+        "icon": "coins"
     }
 ]

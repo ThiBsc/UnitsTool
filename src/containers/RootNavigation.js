@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ConvertScreen from 'src/containers/ConvertScreen';
+import ConvertCurrencyScreen from 'src/containers/ConvertCurrencyScreen';
 import MainMenu from 'src/components/MainMenu';
 import HomeScreen from 'src/containers/HomeScreen';
 import i18n from 'i18next';
@@ -135,7 +136,7 @@ const RootNavigation = ({ value, setValue, unit }) => {
                     key={index}
                     name={conv.category}
                     options={{title: t(conv.title), headerStyle: {backgroundColor: theme.colors.primary }, headerTintColor: theme.colors.white}}>
-                    {props => <ConvertScreen {...props} conversionData={conv} />}
+                    {props => conv.category === 'currency' ? <ConvertCurrencyScreen {...props} /> : <ConvertScreen {...props} conversionData={conv} />}
                   </Stack.Screen>
           })
         }

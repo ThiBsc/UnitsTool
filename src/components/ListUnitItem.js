@@ -26,7 +26,10 @@ const ListUnitItem = ({ unit, value, isReferenceUnit, setRefUnit }) => {
           <Text>{unit.symbol}</Text>
         </ListItem.Title>
         <ListItem.Subtitle>
-          <Text style={{color: 'grey'}}>{t(unit.name)}</Text>
+          <Text style={{color: 'grey'}}>
+            {unit.emoji ? `${unit.emoji} ` : null}
+            {t(unit.name)}
+          </Text>
         </ListItem.Subtitle>
       </ListItem.Content>
 
