@@ -6,12 +6,12 @@ Available languages : 🇬🇧, 🇫🇷, 🇪🇸
 [<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="75"/>](https://play.google.com/store/apps/details?id=com.unitstool)
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/packages/com.unitstool/)
 
-<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
-    <img alt="home" src="screenshot/home.png" style="width: 19%; height: 19%;"/>
-    <img alt="languages" src="screenshot/languages.png" style="width: 19%; height: 19%;"/>
-    <img alt="category" src="screenshot/category.png" style="width: 19%; height: 19%;"/>
-    <img alt="currency" src="screenshot/currency.png" style="width: 19%; height: 19%;"/>
-    <img alt="temperature" src="screenshot/darkmode.png" style="width: 19%; height: 19%;"/>
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+    <img alt="home" src="screenshot/home.png" style="width: 24%; height: 24%;"/>
+    <img alt="languages" src="screenshot/languages.png" style="width: 24%; height: 24%;"/>
+    <img alt="category" src="screenshot/category.png" style="width: 24%; height: 24%;"/>
+    <img alt="currency" src="screenshot/currency.png" style="width: 24%; height: 24%;"/>
+    <img alt="temperature" src="screenshot/darkmode.png" style="width: 24%; height: 24%;"/>
 </div>
 
 ## Privacy
