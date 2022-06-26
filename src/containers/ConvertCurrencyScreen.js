@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
+import Snackbar from 'react-native-snackbar';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, useTheme } from '@rneui/themed';
 import { convertCurrency, getEuropeanCentralBankRates } from 'src/utils/currencies';
@@ -40,23 +41,38 @@ const ConvertCurrencyScreen = ({ navigation }) => {
   const initFxRate = async () => {
     const savedFxRate = await AsyncStorage.getItem(`unitstool_currency_fxRate`);
     if (savedFxRate !== null) {
-      const objFxRate = JSON.parse(value);
+      const objFxRate = JSON.parse(savedFxRate);
       const now = new Date();
       const today = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate()}`;
       const isWeekend = now.getDay() === 0 || now.getDay() === 6;
       // The BCE doesn't update the week-end, so check it
       if (objFxRate.day === undefined || (!isWeekend && today !== objFxRate.day)) {
-        setIsRefreshing(true);
-        const lastFxRate = await getEuropeanCentralBankRates();
-        saveFxRate(lastFxRate);
+        fetchFxRate();
       } else {
         setFxRate(JSON.parse(savedFxRate));
       }
     } else {
-      setIsRefreshing(true);
-      const lastFxRate = await getEuropeanCentralBankRates();
-      saveFxRate(lastFxRate);
+      fetchFxRate();
     }
+  }
+
+  const fetchFxRate = async () => {
+    setIsRefreshing(true);
+    
+    let lastFxRate = await getEuropeanCentralBankRates();
+    if (lastFxRate.day !== undefined) {
+      saveFxRate(lastFxRate);
+    } else {
+      Snackbar.show({
+        text: t('failToFetchCurrency'),
+        duration: Snackbar.LENGTH_LONG,
+        action: {
+          text: 'OK',
+          textColor: theme.colors.success
+        },
+      });
+    }
+
     setIsRefreshing(false);
   }
 
@@ -115,7 +131,7 @@ const ConvertCurrencyScreen = ({ navigation }) => {
         <View style={{flex: 1, width: '100%'}}>
           <FlatList
             data={fxRate.rates}
-            onRefresh={() => {}}
+            onRefresh={fetchFxRate}
             refreshing={isRefreshing}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
