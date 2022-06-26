@@ -8,6 +8,8 @@
         "darkmode": "Mode sombre",
         "sourceECB": "source BCE",
         "update": "Mise à jour",
+        "currencyInfoTitle": "Information",
+        "currencyInfoMessage": "Les données proviennent de la Banque centrale européenne et sont mises à jour une fois par jour, sauf le week-end.\n\nVous avez besoin d'Internet pour obtenir les données.",
 
         "Distance": "Distance",
         "Weight": "Poids",
