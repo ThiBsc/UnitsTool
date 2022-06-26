@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ConvertScreen from 'src/containers/ConvertScreen';
 import ConvertCurrencyScreen from 'src/containers/ConvertCurrencyScreen';
@@ -13,6 +14,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { NavigationContainer } from '@react-navigation/native';
 import { useTheme, useThemeMode } from '@rneui/themed';
+import { Alert } from 'react-native';
+import { Button } from '@rneui/base';
 import { version } from '../../package.json';
 
 i18n
@@ -102,6 +105,16 @@ const RootNavigation = ({ value, setValue, unit }) => {
     }
   }
 
+  const displayCurrencyInfo = () => {
+    Alert.alert(
+      t('currencyInfoTitle'),
+      t('currencyInfoMessage'),
+      [
+        { text: "OK" }
+      ]
+    );
+  }
+
   useEffect(() => {
     if (!isInitialized.current) {
       initLanguage();
@@ -135,7 +148,19 @@ const RootNavigation = ({ value, setValue, unit }) => {
           return <Stack.Screen
                     key={index}
                     name={conv.category}
-                    options={{title: t(conv.title), headerStyle: {backgroundColor: theme.colors.primary }, headerTintColor: theme.colors.white}}>
+                    options={{
+                      title: t(conv.title),
+                      headerStyle: {backgroundColor: theme.colors.primary },
+                      headerTintColor: theme.colors.white,
+                      headerRight: () => (
+                        conv.category === 'currency'
+                        ? <Button size='md' type='clear' color={theme.colors.white} onPress={displayCurrencyInfo}>
+                            <Icon name="info" solid={false} size={24} color={theme.colors.white}/>
+                          </Button>
+                        : null
+                      )
+                    }}
+                  >
                     {props => conv.category === 'currency' ? <ConvertCurrencyScreen {...props} /> : <ConvertScreen {...props} conversionData={conv} />}
                   </Stack.Screen>
           })
