@@ -45,7 +45,7 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       const today = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate()}`;
       const isWeekend = now.getDay() === 0 || now.getDay() === 6;
       // The BCE doesn't update the week-end, so check it
-      if (!isWeekend && today !== objFxRate.day) {
+      if (objFxRate.day === undefined || (!isWeekend && today !== objFxRate.day)) {
         setIsRefreshing(true);
         const lastFxRate = await getEuropeanCentralBankRates();
         saveFxRate(lastFxRate);

@@ -28,7 +28,7 @@ export const convertCurrency = (fxSrc, fxDest, value) => {
 export const getEuropeanCentralBankRates = async () => {
   let fxRate = {};
   try {
-    const result = await axios.get('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
+    const result = await axios.get('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
     const data = result.data;
     const timeRegex = /<Cube time='(\d{4}-\d{2}-\d{2})'>/g;
     const timeMatch = timeRegex.exec(data);
