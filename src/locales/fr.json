@@ -3,8 +3,11 @@
         "home": "Accueil",
         "value": "Valeur",
         "units": "unités",
+        "currencies": "monnaies",
         "lightmode": "Mode clair",
         "darkmode": "Mode sombre",
+        "sourceECB": "source BCE",
+        "update": "Mise à jour",
 
         "Distance": "Distance",
         "Weight": "Poids",
@@ -13,6 +16,7 @@
         "Surface": "Superficie",
         "Volume": "Volume",
         "Chemistry": "Chimie",
+        "Currency": "Devise",
 
         "Millimeter": "Millimètre",
         "Centimeter": "Centimètre",
@@ -53,6 +57,15 @@
         "Cubic yard": "Yard cube",
 
         "Millimole per liter (glucose)": "Millimole par litre (glucose)",
-        "Milligram per deciliter (glucose)": "Milligramme par décilitre (glucose)"
+        "Milligram per deciliter (glucose)": "Milligramme par décilitre (glucose)",
+
+        "Euro": "Euro",
+        "Canadian dollar": "Dollar Canadien",
+        "US dollar": "Dollar US",
+        "Pound sterling": "Livre sterling",
+        "Japanese yen": "Yen Japonais",
+        "Swiss franc": "Franc Suisse",
+        "Mexican peso": "Peso Mexicain",
+        "Australian dollar": "Dollar Australien"
     }
 }

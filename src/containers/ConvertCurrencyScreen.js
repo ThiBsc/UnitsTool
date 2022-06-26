@@ -4,15 +4,17 @@ import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, useTheme } from '@rneui/themed';
-import { getEuropeanCentralBankRates } from 'src/utils/currencies';
-import { convertCurrency } from '../utils/currencies';
+import { convertCurrency, getEuropeanCentralBankRates } from 'src/utils/currencies';
+import { useTranslation } from 'react-i18next';
 
 
 const ConvertCurrencyScreen = ({ navigation }) => {
 
-  const defaultUnit = {iso: 'EUR', name: 'Euro', symbol: '€'};
+  const defaultUnit = {iso: 'EUR', name: 'Euro', symbol: '€', emoji: '🇪🇺'};
 
+  const { t } = useTranslation();
   const isInitialized = useRef(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
   const [value, setValue] = useState(0);
   const [fxRate, setFxRate] = useState([]);
@@ -25,6 +27,8 @@ const ConvertCurrencyScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     const isReferenceUnit = item.iso == refUnit.iso;
     let unityValue = isReferenceUnit ? value : convertCurrency(refUnit, item, value);
+    if (isNaN(unityValue)) unityValue = '?';
+
     return <ListUnitItem
               unit={item}
               value={unityValue}
@@ -34,8 +38,26 @@ const ConvertCurrencyScreen = ({ navigation }) => {
   }
 
   const initFxRate = async () => {
-    const fxRate = await getEuropeanCentralBankRates();
-    setFxRate(fxRate);
+    const savedFxRate = await AsyncStorage.getItem(`unitstool_currency_fxRate`);
+    if (savedFxRate !== null) {
+      const objFxRate = JSON.parse(value);
+      const now = new Date();
+      const today = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate()}`;
+      const isWeekend = now.getDay() === 0 || now.getDay() === 6;
+      // The BCE doesn't update the week-end, so check it
+      if (!isWeekend && today !== objFxRate.day) {
+        setIsRefreshing(true);
+        const lastFxRate = await getEuropeanCentralBankRates();
+        saveFxRate(lastFxRate);
+      } else {
+        setFxRate(JSON.parse(savedFxRate));
+      }
+    } else {
+      setIsRefreshing(true);
+      const lastFxRate = await getEuropeanCentralBankRates();
+      saveFxRate(lastFxRate);
+    }
+    setIsRefreshing(false);
   }
 
   const loadCurrencyFavorite = async () => {
@@ -53,6 +75,16 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       const jsonStrValue = JSON.stringify(value);
       await AsyncStorage.setItem(`unitstool_currency_favorite`, jsonStrValue);
       setRefUnit(value);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const saveFxRate = async (value) => {
+    try {
+      const jsonStrValue = JSON.stringify(value);
+      await AsyncStorage.setItem(`unitstool_currency_fxRate`, jsonStrValue);
+      setFxRate(value);
     } catch (e) {
       console.error(e);
     }
@@ -79,10 +111,12 @@ const ConvertCurrencyScreen = ({ navigation }) => {
           setValue={setValue}
           unit={refUnit}
         />
-        <Text>Last update: {fxRate.day} (from ECB)</Text>
+        <Text>{t('update')}: {fxRate.day} ({t('sourceECB')})</Text>
         <View style={{flex: 1, width: '100%'}}>
           <FlatList
             data={fxRate.rates}
+            onRefresh={() => {}}
+            refreshing={isRefreshing}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
           />

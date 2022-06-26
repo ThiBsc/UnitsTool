@@ -24,7 +24,10 @@ const UnitValue = ({ value, setValue, unit }) => {
         />
       </View>
       <View style={{flex: 0, flexDirection: 'row', alignItems: 'center', marginRight: 5}}>
-        <Text style={{fontWeight: 'bold', fontSize: 20, color: theme.colors.grey0}}>{unit?.symbol ?? ''}</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 20, color: theme.colors.grey0}}>
+          {unit?.symbol ?? ''}
+          {unit?.emoji ? ` ${unit.emoji}` : ''}
+        </Text>
       </View>
     </View>
   );

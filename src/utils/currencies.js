@@ -7,7 +7,9 @@ const managedCurrency = {
   'USD': {name: 'US dollar', symbol: '$', emoji: '🇺🇲'},
   'GBP': {name: 'Pound sterling', symbol: '£', emoji: '🇬🇧'},
   'JPY': {name: 'Japanese yen', symbol: '¥', emoji: '🇯🇵'},
-  'CHF': {name: 'Swiss franc', symbol: 'CH', emoji: '🇨🇭'}
+  'CHF': {name: 'Swiss franc', symbol: 'CH', emoji: '🇨🇭'},
+  'MXN': {name: 'Mexican peso', symbol: '$', emoji: '🇲🇽'},
+  'AUD': {name: 'Australian dollar', symbol: '$', emoji: '🇦🇺'},
 };
 
 export const currencyCount = Object.keys(managedCurrency).length;
@@ -45,7 +47,8 @@ export const getEuropeanCentralBankRates = async () => {
       }
     }
     fxRate['day'] = timeMatch[1];
-    fxRate['rates'] = currencies.sort((a, b) => a.name > b.name);
+    //fxRate['rates'] = currencies.sort((a, b) => a.iso > b.iso);
+    fxRate['rates'] = currencies;
   } catch (e) {
     console.log('Fail to get ECB rates', e);
   }

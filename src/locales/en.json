@@ -3,6 +3,8 @@
         "home": "Home",
         "value": "Value",
         "lightmode": "Light mode",
-        "darkmode": "Dark mode"
+        "darkmode": "Dark mode",
+        "sourceECB": "from ECB",
+        "update": "Update"
     }
 }

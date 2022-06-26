@@ -231,6 +231,8 @@
     {
         "category": "currency",
         "title": "Currency",
-        "icon": "coins"
+        "icon": "coins",
+        "reference": "EUR",
+        "units": []
     }
 ]

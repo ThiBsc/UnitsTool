@@ -3,8 +3,11 @@
         "home": "Hogar",
         "value": "Valor",
         "units": "unidades",
+        "currencies": "monedas",
         "lightmode": "Modo de luz",
         "darkmode": "Modo oscuro",
+        "sourceECB": "fuente ECB",
+        "update": "Actualización",
 
         "Distance": "Distancia",
         "Weight": "Peso",
@@ -13,6 +16,7 @@
         "Surface": "Superficie",
         "Volume": "Volumen",
         "Chemistry": "Química",
+        "Currency": "Divisa",
 
         "Millimeter": "Milímetro",
         "Centimeter": "Centímetro",
@@ -53,6 +57,15 @@
         "Cubic yard": "Yarda cúbica",
 
         "Millimole per liter (glucose)": "Milimole por litro (glucosa)",
-        "Milligram per deciliter (glucose)": "Miligramo por decilitro (glucosa)"
+        "Milligram per deciliter (glucose)": "Miligramo por decilitro (glucosa)",
+
+        "Euro": "Euro",
+        "Canadian dollar": "Dolar Canadiense",
+        "US dollar": "Dólar Estadounidense",
+        "Pound sterling": "Libra esterlina",
+        "Japanese yen": "Yen Japonés",
+        "Swiss franc": "Franco Suizo",
+        "Mexican peso": "Peso Mexicano",
+        "Australian dollar": "Dólar Australiano"
     }
 }
