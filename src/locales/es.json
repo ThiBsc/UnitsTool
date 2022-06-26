@@ -10,6 +10,7 @@
         "update": "Actualización",
         "currencyInfoTitle": "Información",
         "currencyInfoMessage": "Los datos provienen del Banco Central Europeo y se actualizan una vez al día, excepto el fin de semana.\n\nNecesitas internet para obtener los datos.",
+        "failToFetchCurrency": "Error al obtener las tasas del BCE.\nComprueba tu conexión a Internet",
 
         "Distance": "Distancia",
         "Weight": "Peso",
