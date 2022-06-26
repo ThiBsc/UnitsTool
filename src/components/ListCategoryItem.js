@@ -3,6 +3,7 @@ import { Icon } from "@rneui/themed";
 import TouchableScale from 'react-native-touchable-scale';
 import { ListItem, Text, useTheme } from "@rneui/themed";
 import { useTranslation } from 'react-i18next';
+import { currencyCount } from 'src/utils/currencies';
 
 const ListCategoryItem = ({ navigation, conversion }) => {
 
@@ -24,7 +25,11 @@ const ListCategoryItem = ({ navigation, conversion }) => {
           <Text>{t(conversion.title)}</Text>
         </ListItem.Title>
         <ListItem.Subtitle>
-          <Text style={{color: theme.colors.grey2}}>({conversion.units.length} {t('units')})</Text>
+          {
+            conversion.category === 'currency'
+            ? <Text style={{color: theme.colors.grey2}}>({currencyCount} {t('currencies')})</Text>
+            : <Text style={{color: theme.colors.grey2}}>({conversion.units.length} {t('units')})</Text>
+          }
         </ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>

@@ -46,14 +46,14 @@ export const getlowestfraction = (value) => {
     return `${k === 1 ? h : h + "/" + k}`;
 }
 
-const twoDecimals = (value) => {
+export const twoDecimals = (value) => {
     let log10 = value ? Math.floor(Math.log10(value)) : 0;
     let div = log10 < 0 ? Math.pow(10, 1 - log10) : 100;
 
     return Math.round(value * div) / div;
 }
 
-const formulaToValue = (formula, value, invertSign) => {
+export const formulaToValue = (formula, value, invertSign) => {
     let result = Number.parseFloat(value);
     const steps = formula.split(' ');
     

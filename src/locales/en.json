@@ -3,6 +3,11 @@
         "home": "Home",
         "value": "Value",
         "lightmode": "Light mode",
-        "darkmode": "Dark mode"
+        "darkmode": "Dark mode",
+        "sourceECB": "from ECB",
+        "update": "Update",
+        "currencyInfoTitle": "Information",
+        "currencyInfoMessage": "The data come from the European Central Bank and are updated once a day, except the weekend.\n\nYou need internet to get the data.",
+        "failToFetchCurrency": "Failed to get ECB rates.\nCheck your internet connection"
     }
 }
