@@ -1,5 +1,5 @@
 # UnitsTool
-[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)  
+[<img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">](https://liberapay.com/thibsc/donate) [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)   
 An application to convert units  
 Available languages : 🇬🇧, 🇫🇷, 🇪🇸
 
