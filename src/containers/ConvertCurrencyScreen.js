@@ -49,7 +49,7 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       if (objFxRate.day === undefined || (!isWeekend && today !== objFxRate.day)) {
         fetchFxRate();
       } else {
-        setFxRate(JSON.parse(savedFxRate));
+        setFxRate(objFxRate);
       }
     } else {
       fetchFxRate();
@@ -71,6 +71,11 @@ const ConvertCurrencyScreen = ({ navigation }) => {
           textColor: theme.colors.success
         },
       });
+      // Use last saved if exist
+      const savedFxRate = await AsyncStorage.getItem(`unitstool_currency_fxRate`);
+      if (savedFxRate !== null) {
+        setFxRate(JSON.parse(savedFxRate));
+      }
     }
 
     setIsRefreshing(false);
