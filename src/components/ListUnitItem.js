@@ -1,6 +1,5 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import TouchableScale from 'react-native-touchable-scale';
 import { ListItem, useTheme } from "@rneui/themed";
 import { Button } from '@rneui/base';
 import { Text } from "react-native";
@@ -15,7 +14,6 @@ const ListUnitItem = ({ unit, value, isReferenceUnit, setRefUnit }) => {
 
   return (
     <ListItem
-      Component={TouchableScale}
       containerStyle={{ borderRadius: 10, marginLeft: 10, marginRight: 10, marginTop: 5, marginBottom: 5, backgroundColor: bgColor }}
       pad={20}
     >

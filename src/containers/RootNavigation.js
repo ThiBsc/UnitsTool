@@ -32,7 +32,7 @@ i18n
 
 const Stack = createNativeStackNavigator();
 
-const RootNavigation = ({ value, setValue, unit }) => {
+const RootNavigation = ({ }) => {
 
   const isInitialized = useRef(false);
   const { t } = useTranslation();
