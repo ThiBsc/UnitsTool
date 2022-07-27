@@ -22,14 +22,18 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = (item.name == refUnit.name);
-    let unityValue = isReferenceUnit ? value : convert(conversionData, refUnit.name, item.name, value);
-    if (isNaN(unityValue)) unityValue = '?';
-
-    if (item.isFraction && unityValue !== '?') {
-      const fraction = getlowestfraction(unityValue);
-      // If displayable as a readable fraction
-      if (fraction.match(/^(\d+|\d\/\d)$/))
-        unityValue = fraction;
+    let unityValue = isReferenceUnit ? parseFloat(value) : convert(conversionData, refUnit.name, item.name, value);
+    if (isNaN(unityValue)) {
+      unityValue = '?';
+    } else {
+      if (item.isFraction) {
+        const fraction = getlowestfraction(unityValue);
+        // If displayable as a readable fraction
+        if (fraction.match(/^(\d+|\d\/\d)$/))
+          unityValue = fraction;
+      } else {
+        unityValue = unityValue.toLocaleString();
+      }
     }
   
     return <ListUnitItem

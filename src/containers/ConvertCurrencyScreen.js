@@ -27,8 +27,12 @@ const ConvertCurrencyScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = item.iso == refUnit.iso;
-    let unityValue = isReferenceUnit ? value : convertCurrency(refUnit, item, value);
-    if (isNaN(unityValue)) unityValue = '?';
+    let unityValue = isReferenceUnit ? parseFloat(value) : convertCurrency(refUnit, item, value);
+    if (isNaN(unityValue)) {
+      unityValue = '?';
+    } else {
+      unityValue = unityValue.toLocaleString();
+    }
 
     return <ListUnitItem
               unit={item}
