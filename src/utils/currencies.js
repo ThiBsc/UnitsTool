@@ -9,6 +9,7 @@ const managedCurrency = {
   'JPY': {name: 'Japanese yen', symbol: '¥', emoji: '🇯🇵'},
   'CHF': {name: 'Swiss franc', symbol: 'CH', emoji: '🇨🇭'},
   'MXN': {name: 'Mexican peso', symbol: '$', emoji: '🇲🇽'},
+  'INR': {name: 'Indian rupee', symbol: '₹', emoji: '🇮🇳'},
   'AUD': {name: 'Australian dollar', symbol: '$', emoji: '🇦🇺'},
 };
 
