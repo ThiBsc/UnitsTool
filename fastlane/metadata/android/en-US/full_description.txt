@@ -1,5 +1,11 @@
-An open source application to convert units.
-- Select the category you want by touching it
-- Select your favorite unit by touching the star
-- Enter your value to convert
+A unit conversion application:
 
+📏 Distance conversion
+⚖️ Weight conversion
+🌡️ Temperature conversion
+💦 Liquid conversion
+⬜ Surface conversion
+🧊 Volume conversion
+💵 Currency conversion
+
+Quick and easy to use unit converter
