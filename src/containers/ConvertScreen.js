@@ -31,6 +31,12 @@ const ConvertScreen = ({ navigation, conversionData }) => {
         // If displayable as a readable fraction
         if (fraction.match(/^(\d+|\d\/\d)$/))
           unityValue = fraction;
+      } else if (item.compositeUnits) {
+        let buildedValue = '';
+        unityValue.toString().split(/,|\./).forEach((val, idx) => {
+          buildedValue += `${val}${item.symbols[idx]}`;
+        });
+        unityValue = buildedValue
       } else {
         unityValue = unityValue.toLocaleString();
       }

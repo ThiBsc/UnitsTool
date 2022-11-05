@@ -44,6 +44,14 @@
                 "name": "Miles",
                 "symbol": "mi",
                 "formula": "/ 160934"
+            },
+            {
+                "name": "Human height",
+                "compositeUnits": true,
+                "units": ["Feet", "Inch"],
+                "symbols": ["'", "\""],
+                "emoji": "🧍",
+                "formula": ""
             }
         ]
     },

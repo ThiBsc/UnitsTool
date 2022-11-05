@@ -1,4 +1,4 @@
-export const convert = (category, unitNameSrc, unitNameDest, value) => {
+export const convert = (category, unitNameSrc, unitNameDest, value, roundToTwo = true) => {
     const categoryObj = category;
     const reference = categoryObj.reference;
 
@@ -8,17 +8,35 @@ export const convert = (category, unitNameSrc, unitNameDest, value) => {
     const srcIsReference = (unitSrc.name === reference);
     //console.log('DEBUG', srcIsReference, unitSrc, unitDest);
 
-    // If the source unity is not the reference, convert it to simplify
-    if (!srcIsReference){
-        // If we have to convert, the * is / and + is -, and vice versa
-        if (unitSrc.reverseFormula)
-            value = formulaToValue(unitSrc.reverseFormula, value, false);
-        else
-            value = formulaToValue(unitSrc.formula, value, true);
+    let newValue = value;
+    if (unitSrc.compositeUnits === true) {
+        // /!\ Can't manage more than 2 composite units for now
+        const firstPart = Math.floor(value);
+        const secondPart = Number.parseInt(value.toString().split(/,|\./)[1]);
+        let sumValue = convert(category, unitSrc.units[0], unitNameDest, firstPart, false);
+        sumValue += convert(category, unitSrc.units[1], unitNameDest, secondPart, false);
+        newValue = sumValue;
+    } else if (unitDest.compositeUnits === true) {
+        // Can't manage more than 2 composite units for now
+        const firstPart = convert(category, unitNameSrc, unitDest.units[0], value, false);
+        let secondPart = convert(category, unitDest.units[0], unitDest.units[1], firstPart % 1, false);
+        // Clean
+        secondPart = secondPart.toString().replace('.', '');
+        newValue = Number.parseFloat(`${Math.floor(firstPart)}.${secondPart}`);
+    } else {
+        // If the source unity is not the reference, convert it to simplify
+        if (!srcIsReference){
+            // If we have to convert, the * is / and + is -, and vice versa
+            if (unitSrc.reverseFormula)
+                value = formulaToValue(unitSrc.reverseFormula, value, false);
+            else
+                value = formulaToValue(unitSrc.formula, value, true);
+        }
+        newValue = formulaToValue(unitDest.formula, value, false);
     }
-    let newValue = formulaToValue(unitDest.formula, value, false);
+
     // Round to 2 decimals
-    return twoDecimals(newValue);
+    return roundToTwo ? twoDecimals(newValue) : newValue;
 }
 
 /* https://stackoverflow.com/questions/14002113/how-to-simplify-a-decimal-into-the-smallest-possible-fraction */
