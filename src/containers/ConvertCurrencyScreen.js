@@ -7,6 +7,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, useTheme } from '@rneui/themed';
 import { convertCurrency, getEuropeanCentralBankRates } from 'src/utils/currencies';
 import { useTranslation } from 'react-i18next';
+import { fractionToNumber } from 'src/utils/conversion';
 
 
 const ConvertCurrencyScreen = ({ navigation }) => {
@@ -27,7 +28,14 @@ const ConvertCurrencyScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = item.iso == refUnit.iso;
-    let unityValue = isReferenceUnit ? parseFloat(value) : convertCurrency(refUnit, item, value);
+
+    let trueValue = value;
+    const isFractional = value.toString().includes('/');
+    if (isFractional) {
+      trueValue = fractionToNumber(value);
+    }
+
+    let unityValue = isReferenceUnit ? parseFloat(trueValue) : convertCurrency(refUnit, item, trueValue);
     if (isNaN(unityValue)) {
       unityValue = '?';
     } else {

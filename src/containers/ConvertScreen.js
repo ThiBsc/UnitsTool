@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnitValue from 'src/components/UnitValue';
 import ListUnitItem from 'src/components/ListUnitItem';
-import { convert, getlowestfraction } from 'src/utils/conversion';
+import { convert, fractionToNumber, getlowestfraction } from 'src/utils/conversion';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { useTheme } from '@rneui/themed';
 
@@ -22,7 +22,14 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   const renderItem = ({ item }) => {
     const isReferenceUnit = (item.name == refUnit.name);
-    let unityValue = isReferenceUnit ? parseFloat(value) : convert(conversionData, refUnit.name, item.name, value);
+
+    let trueValue = value;
+    const isFractional = value.toString().includes('/');
+    if (isFractional) {
+      trueValue = fractionToNumber(value);
+    }
+
+    let unityValue = isReferenceUnit ? parseFloat(trueValue) : convert(conversionData, refUnit.name, item.name, trueValue);
     if (isNaN(unityValue)) {
       unityValue = '?';
     } else {

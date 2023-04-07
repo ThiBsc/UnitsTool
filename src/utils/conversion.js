@@ -116,3 +116,8 @@ export const formulaToValue = (formula, value, invertSign) => {
     }
     return result;
 }
+
+export const fractionToNumber = (value) => {
+    const [a, b] = value.split('/');
+    return Number.parseFloat(a) / Number.parseFloat(b);
+}
