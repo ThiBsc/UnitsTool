@@ -134,9 +134,21 @@
                 "formula": "* 1"
             },
             {
-                "name": "Cup",
-                "symbol": "🥣",
+                "name": "Cup (US)",
+                "symbol": "🥣🇺🇸",
                 "formula": "* 4.227",
+                "isFraction": true
+            },
+            {
+                "name": "Cup (Metric)",
+                "symbol": "🥣📏",
+                "formula": "* 4",
+                "isFraction": true
+            },
+            {
+                "name": "Cup (Imperial)",
+                "symbol": "🥣📏",
+                "formula": "* 3.52",
                 "isFraction": true
             },
             {

@@ -76,3 +76,10 @@ npx react-native run-android
 https://reactnative.dev/docs/getting-started  
 https://reactnativeelements.com/    
 https://reactnavigation.org/
+
+### Before generate Android bundle
+
+```sh
+cd android/app/
+npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output src/main/assets/index.android.bundle
+```

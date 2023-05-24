@@ -44,7 +44,9 @@
         "Milliliter": "Millilitre",
         "Centiliter": "Centilitre",
         "Liter": "Litre",
-        "Cup": "Tasse",
+        "Cup (US)": "Tasse (US)",
+        "Cup (Metric)": "Tasse (Métrique)",
+        "Cup (Imperial)": "Tassa (Impériale)",
         "US fl oz": "US fl oz",
         "US Gallon": "US Gallon",
 
