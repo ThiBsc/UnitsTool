@@ -85,6 +85,11 @@
                 "name": "Pounds",
                 "symbol": "lbs",
                 "formula": "/ 454"
+            },
+            {
+                "name": "Ounces",
+                "symbol": "oz",
+                "formula": "/ 28.35"
             }
         ]
     },
@@ -147,7 +152,7 @@
             },
             {
                 "name": "Cup (Imperial)",
-                "symbol": "🥣📏",
+                "symbol": "🥣👑",
                 "formula": "* 3.52",
                 "isFraction": true
             },
