@@ -1,9 +1,9 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import translation from 'src/utils/translation.json';
+import translation from '../utils/translation.json';
 import { FlatList, View } from 'react-native';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
-import { Divider, Text, useTheme, useThemeMode } from '@rneui/themed';
+import { Divider, Text, useTheme } from '@rneui/themed';
 import { useTranslation } from 'react-i18next';
 
 
