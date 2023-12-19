@@ -1,5 +1,5 @@
 import axios from "axios";
-import { formulaToValue, twoDecimals } from "src/utils/conversion";
+import { formulaToValue, twoDecimals } from "../utils/conversion";
 
 const managedCurrency = {
   'EUR': {name: 'Euro', symbol: '€', emoji: '🇪🇺'},

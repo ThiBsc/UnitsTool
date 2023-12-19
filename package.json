@@ -3,6 +3,7 @@
   "version": "1.0.9",
   "private": true,
   "scripts": {
+    "clean-android": "cd android && rm -R .gradle && cd app && rm -R build",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -10,33 +11,36 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.18.1",
-    "@react-navigation/native": "^6.1.6",
-    "@react-navigation/native-stack": "^6.9.12",
-    "@rneui/base": "^4.0.0-rc.5",
-    "@rneui/themed": "^4.0.0-rc.5",
-    "axios": "^0.27.2",
-    "i18next": "^21.8.4",
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "@rneui/base": "^4.0.0-rc.7",
+    "@rneui/themed": "^4.0.0-rc.8",
+    "axios": "^1.6.2",
+    "i18next": "^23.7.11",
     "react": "^18.2.0",
-    "react-i18next": "^11.18.6",
-    "react-native": "^0.71.6",
-    "react-native-popup-menu": "^0.15.13",
-    "react-native-safe-area-context": "^4.5.1",
-    "react-native-screens": "^3.20.0",
-    "react-native-snackbar": "^2.4.0",
-    "react-native-vector-icons": "^9.2.0"
+    "react-i18next": "^13.5.0",
+    "react-native": "^0.73.1",
+    "react-native-popup-menu": "^0.16.1",
+    "react-native-safe-area-context": "^4.8.1",
+    "react-native-screens": "^3.29.0",
+    "react-native-snackbar": "^2.6.2",
+    "react-native-vector-icons": "^10.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/runtime": "7.17.9",
-    "@react-native-community/eslint-config": "2.0.0",
-    "babel-jest": "26.6.3",
-    "eslint": "7.32.0",
-    "jest": "26.6.3",
-    "metro-react-native-babel-preset": "0.67.0",
-    "react-test-renderer": "18.0.0"
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "^0.73.18",
+    "@react-native/eslint-config": "^0.73.1",
+    "@react-native/metro-config": "^0.73.2",
+    "babel-jest": "^29.6.3",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "18.2.0"
   },
-  "jest": {
-    "preset": "react-native"
+  "engines": {
+    "node": ">=18"
   }
 }

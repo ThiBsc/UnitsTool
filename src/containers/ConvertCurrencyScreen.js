@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import UnitValue from 'src/components/UnitValue';
-import ListUnitItem from 'src/components/ListUnitItem';
+import UnitValue from '../components/UnitValue';
+import ListUnitItem from '../components/ListUnitItem';
 import Snackbar from 'react-native-snackbar';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, useTheme } from '@rneui/themed';
-import { convertCurrency, getEuropeanCentralBankRates } from 'src/utils/currencies';
+import { convertCurrency, getEuropeanCentralBankRates } from '../utils/currencies';
 import { useTranslation } from 'react-i18next';
-import { fractionToNumber } from 'src/utils/conversion';
+import { fractionToNumber } from '../utils/conversion';
 
 
 const ConvertCurrencyScreen = ({ navigation }) => {

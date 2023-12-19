@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import UnitValue from 'src/components/UnitValue';
-import ListUnitItem from 'src/components/ListUnitItem';
-import { convert, fractionToNumber, getlowestfraction } from 'src/utils/conversion';
+import UnitValue from '../components/UnitValue';
+import ListUnitItem from '../components/ListUnitItem';
+import { convert, fractionToNumber, getlowestfraction } from '../utils/conversion';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { useTheme } from '@rneui/themed';
 
