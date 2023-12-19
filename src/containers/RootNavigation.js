@@ -37,23 +37,21 @@ const RootNavigation = ({ }) => {
   const isInitialized = useRef(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const { _, setMode } = useThemeMode();
+  const { mode, setMode } = useThemeMode();
   const [usedConversions, setUsedConversions] = useState(conversion);
-  const [darkMode, setDarkMode] = useState(false);
+
+  const isDarkMode = mode === 'dark';
 
   const setThemeMode = async (dark) => {
     const theme = dark ? 'dark' : 'light';
     await AsyncStorage.setItem('unitstool_theme', theme);
     setMode(theme);
-    setDarkMode(dark);
   }
 
   const initThemeMode = async () => {
     const theme = await AsyncStorage.getItem('unitstool_theme');
     if (theme !== null) {
-      const dark = theme === 'dark';
       setMode(theme);
-      setDarkMode(dark);
     }
   }
 
@@ -137,7 +135,7 @@ const RootNavigation = ({ }) => {
             headerStyle: {backgroundColor: theme.colors.primary },
             headerTintColor: theme.colors.white,
             headerRight: () => (
-                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={darkMode} setDarkMode={setThemeMode}/>
+                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={isDarkMode} setDarkMode={setThemeMode}/>
             )
           }}
         >
