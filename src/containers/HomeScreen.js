@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ListCategoryItem from 'src/components/ListCategoryItem';
-import EmptyDataComponent from 'src/components/EmptyDataComponent';
+import ListCategoryItem from '../components/ListCategoryItem';
+import EmptyDataComponent from '../components/EmptyDataComponent';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useTheme } from '@rneui/themed';
 

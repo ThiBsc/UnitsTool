@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ConvertScreen from 'src/containers/ConvertScreen';
-import ConvertCurrencyScreen from 'src/containers/ConvertCurrencyScreen';
-import MainMenu from 'src/components/MainMenu';
-import HomeScreen from 'src/containers/HomeScreen';
+import ConvertScreen from './ConvertScreen';
+import ConvertCurrencyScreen from './ConvertCurrencyScreen';
+import MainMenu from '../components/MainMenu';
+import HomeScreen from './HomeScreen';
 import i18n from 'i18next';
-import conversion from 'src/utils/conversion.json';
-import en from 'src/locales/en.json';
-import fr from 'src/locales/fr.json';
-import es from 'src/locales/es.json';
+import conversion from '../utils/conversion.json';
+import en from '../locales/en.json';
+import fr from '../locales/fr.json';
+import es from '../locales/es.json';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { NavigationContainer } from '@react-navigation/native';
@@ -37,23 +37,21 @@ const RootNavigation = ({ }) => {
   const isInitialized = useRef(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const { _, setMode } = useThemeMode();
+  const { mode, setMode } = useThemeMode();
   const [usedConversions, setUsedConversions] = useState(conversion);
-  const [darkMode, setDarkMode] = useState(false);
+
+  const isDarkMode = mode === 'dark';
 
   const setThemeMode = async (dark) => {
     const theme = dark ? 'dark' : 'light';
     await AsyncStorage.setItem('unitstool_theme', theme);
     setMode(theme);
-    setDarkMode(dark);
   }
 
   const initThemeMode = async () => {
     const theme = await AsyncStorage.getItem('unitstool_theme');
     if (theme !== null) {
-      const dark = theme === 'dark';
       setMode(theme);
-      setDarkMode(dark);
     }
   }
 
@@ -137,7 +135,7 @@ const RootNavigation = ({ }) => {
             headerStyle: {backgroundColor: theme.colors.primary },
             headerTintColor: theme.colors.white,
             headerRight: () => (
-                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={darkMode} setDarkMode={setThemeMode}/>
+                <MainMenu currentLanguage={i18n.language} changeLanguage={changeLanguage} darkMode={isDarkMode} setDarkMode={setThemeMode}/>
             )
           }}
         >

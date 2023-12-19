@@ -6,17 +6,19 @@
  * @flow strict-local
  */
 import React, { Suspense } from 'react';
-import RootNavigation from 'src/containers/RootNavigation';
+import RootNavigation from './containers/RootNavigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MenuProvider } from 'react-native-popup-menu';
-import { ThemeProvider } from '@rneui/themed';
+import { ThemeProvider, createTheme } from '@rneui/themed';
+
+const theme = createTheme({});
 
 const App = () => {
 
   return (
     <Suspense fallback="Loading...">
       <SafeAreaProvider>
-        <ThemeProvider>
+        <ThemeProvider theme={theme}>
           <MenuProvider>
             <RootNavigation/>
           </MenuProvider>
