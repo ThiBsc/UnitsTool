@@ -80,8 +80,8 @@ android {
         applicationId "com.unitstool"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 8
-        versionName "1.0.9"
+        versionCode 9004
+        versionName "1.0.10"
     }
     signingConfigs {
         debug {
@@ -109,6 +109,11 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    bundle {
+        language {
+            enableSplit = false
         }
     }
 }
