@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DraggableFlatList, { OpacityDecorator } from 'react-native-draggable-flatlist';
 import UnitValue from '../components/UnitValue';
 import ListUnitItem from '../components/ListUnitItem';
 import { convert, fractionToNumber, getlowestfraction } from '../utils/conversion';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useTheme } from '@rneui/themed';
+import ShakingComponent from '../components/ShakingComponent';
 
 
 const ConvertScreen = ({ navigation, conversionData }) => {
@@ -14,13 +16,22 @@ const ConvertScreen = ({ navigation, conversionData }) => {
   const isInitialized = useRef(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
   const [value, setValue] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const { theme } = useTheme();
 
   const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
+
+  const onDragBegin = () => {
+    setIsDragging(true);
+  }
+
+  const onDragEnd = () => {
+    setIsDragging(false);
+  }
   
   const keyExtractor = (item, index) => item + index;
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, drag, isActive }) => {
     const isReferenceUnit = (item.name == refUnit.name);
 
     let trueValue = value;
@@ -49,12 +60,23 @@ const ConvertScreen = ({ navigation, conversionData }) => {
       }
     }
   
-    return <ListUnitItem
+    return (
+      <OpacityDecorator activeOpacity={0.5}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onLongPress={drag}
+        >
+          <ShakingComponent active={isDragging && isActive}>
+            <ListUnitItem
               unit={item}
               value={unityValue}
               isReferenceUnit={isReferenceUnit}
               setRefUnit={saveCategoryFavorite}
             />
+          </ShakingComponent>
+        </TouchableOpacity>
+      </OpacityDecorator>
+    );
   }
 
   const loadCategoryFavorite = async () => {
@@ -100,12 +122,13 @@ const ConvertScreen = ({ navigation, conversionData }) => {
           setValue={setValue}
           unit={refUnit}
         />
-        {/*<Text>{conversionData.title}</Text>*/}
         <View style={{flex: 1, width: '100%'}}>
-          <FlatList
+          <DraggableFlatList
             data={conversionData.units}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
+            onDragBegin={onDragBegin}
+            onDragEnd={onDragEnd}
           />
         </View>
     </View>
