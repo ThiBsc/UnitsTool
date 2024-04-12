@@ -11,21 +11,22 @@ import ShakingComponent from '../components/ShakingComponent';
 
 const ConvertScreen = ({ navigation, conversionData }) => {
 
+  const categoryOrderKey = `unitstool_${conversionData.category}_order`;
+  const categoryFavoriteKey = `unitstool_${conversionData.category}_favorite`;
   const defaultUnit = conversionData.units.find(unit => unit.name == conversionData.reference);
 
   const isInitialized = useRef(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
   const [value, setValue] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [units, setUnits] = useState(conversionData.units);
   const { theme } = useTheme();
 
   const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
 
-  const onDragBegin = () => {
-    setIsDragging(true);
-  }
-
-  const onDragEnd = () => {
+  const onDragEnd = ({data}) => {
+    setUnits(data);
+    saveCategoryOrder(data);
     setIsDragging(false);
   }
   
@@ -79,9 +80,37 @@ const ConvertScreen = ({ navigation, conversionData }) => {
     );
   }
 
+  const loadCategoryOrder = async () => {
+    try {
+      const value = await AsyncStorage.getItem(categoryOrderKey);
+      if (value !== null && value.length > 0) {
+        const savedUnits = JSON.parse(value);
+        const isCoherent =
+          conversionData.units.length === savedUnits.length
+          && conversionData.units.every(unit => savedUnits.some(sunit => unit.name == sunit.name));
+
+        if (isCoherent) {
+          setUnits(savedUnits);
+        } else {
+          await AsyncStorage.removeItem(categoryOrderKey);
+        }
+      }
+    } catch(e) {
+    }
+  }
+
+  const saveCategoryOrder = async (value) => {
+    try {
+      const jsonStrValue = JSON.stringify(value);
+      await AsyncStorage.setItem(categoryOrderKey, jsonStrValue);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   const loadCategoryFavorite = async () => {
     try {
-      const value = await AsyncStorage.getItem(`unitstool_${conversionData.category}_favorite`);
+      const value = await AsyncStorage.getItem(categoryFavoriteKey);
       if (value !== null && value.length > 0) {
         const savedUnit = JSON.parse(value);
         // check if favourite init exist in conversionData
@@ -95,7 +124,7 @@ const ConvertScreen = ({ navigation, conversionData }) => {
   const saveCategoryFavorite = async (value) => {
     try {
       const jsonStrValue = JSON.stringify(value);
-      await AsyncStorage.setItem(`unitstool_${conversionData.category}_favorite`, jsonStrValue);
+      await AsyncStorage.setItem(categoryFavoriteKey, jsonStrValue);
       setRefUnit(value);
     } catch (e) {
       console.error(e);
@@ -104,6 +133,7 @@ const ConvertScreen = ({ navigation, conversionData }) => {
 
   useEffect(() => {
     if (!isInitialized.current) {
+      loadCategoryOrder();
       loadCategoryFavorite();
     }
 
@@ -124,10 +154,10 @@ const ConvertScreen = ({ navigation, conversionData }) => {
         />
         <View style={{flex: 1, width: '100%'}}>
           <DraggableFlatList
-            data={conversionData.units}
+            data={units}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
-            onDragBegin={onDragBegin}
+            onDragBegin={() => setIsDragging(true)}
             onDragEnd={onDragEnd}
           />
         </View>
