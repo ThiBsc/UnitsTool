@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DraggableFlatList, { OpacityDecorator } from 'react-native-draggable-flatlist';
 import UnitValue from '../components/UnitValue';
 import ListUnitItem from '../components/ListUnitItem';
 import Snackbar from 'react-native-snackbar';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { RefreshControl } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text, useTheme } from '@rneui/themed';
 import { convertCurrency, getEuropeanCentralBankRates } from '../utils/currencies';
 import { useTranslation } from 'react-i18next';
 import { fractionToNumber } from '../utils/conversion';
+import ShakingComponent from '../components/ShakingComponent';
 
 
 const ConvertCurrencyScreen = ({ navigation }) => {
@@ -17,16 +20,28 @@ const ConvertCurrencyScreen = ({ navigation }) => {
   const { t } = useTranslation();
   const isInitialized = useRef(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [refUnit, setRefUnit] = useState(defaultUnit);
   const [value, setValue] = useState(0);
-  const [fxRate, setFxRate] = useState([]);
+  const [fxRate, setFxRate] = useState({});
   const { theme } = useTheme();
 
   const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
+
+  const onDragEnd = ({data}) => {
+    const newFxRate = {
+      ...fxRate,
+      rates: data
+    };
+
+    setFxRate(newFxRate);
+    saveCurrencyOrder(data);
+    setIsDragging(false);
+  }
   
   const keyExtractor = (item, index) => item + index;
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, drag, isActive }) => {
     const isReferenceUnit = item.iso == refUnit.iso;
 
     let trueValue = value;
@@ -42,12 +57,23 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       unityValue = unityValue.toLocaleString();
     }
 
-    return <ListUnitItem
+    return (
+      <OpacityDecorator activeOpacity={0.5}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onLongPress={drag}
+        >
+          <ShakingComponent active={isDragging && isActive}>
+            <ListUnitItem
               unit={item}
               value={unityValue}
               isReferenceUnit={isReferenceUnit}
               setRefUnit={saveCurrencyFavorite}
             />
+          </ShakingComponent>
+        </TouchableOpacity>
+      </OpacityDecorator>
+    );
   }
 
   const initFxRate = async () => {
@@ -61,7 +87,7 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       if (objFxRate.day === undefined || (!isWeekend && today !== objFxRate.day)) {
         fetchFxRate();
       } else {
-        setFxRate(objFxRate);
+        loadCurrencyOrder(objFxRate);
       }
     } else {
       fetchFxRate();
@@ -86,11 +112,49 @@ const ConvertCurrencyScreen = ({ navigation }) => {
       // Use last saved if exist
       const savedFxRate = await AsyncStorage.getItem(`unitstool_currency_fxRate`);
       if (savedFxRate !== null) {
-        setFxRate(JSON.parse(savedFxRate));
+        loadCurrencyOrder(JSON.parse(savedFxRate));
       }
     }
 
     setIsRefreshing(false);
+  }
+
+  const loadCurrencyOrder = async (fxRate) => {
+    try {
+      const value = await AsyncStorage.getItem(`unitstool_currency_order`);
+      if (value !== null && value.length > 0) {
+        const savedCurrencies = JSON.parse(value);
+        const isCoherent =
+          fxRate.rates?.length === savedCurrencies.length
+          && fxRate.rates?.every(currency => savedCurrencies.includes(currency.iso));
+
+        if (isCoherent) {
+          const newFxRate = {
+            ...fxRate,
+            rates: savedCurrencies.map(iso => fxRate.rates.find(rate => rate.iso === iso))
+          };
+      
+          setFxRate(newFxRate);
+        } else {
+          await AsyncStorage.removeItem(`unitstool_currency_order`);
+          setFxRate(fxRate);
+        }
+      } else {
+        setFxRate(fxRate);
+      }
+    } catch(e) {
+      setFxRate(fxRate);
+    }
+  }
+
+  const saveCurrencyOrder = async (value) => {
+    try {
+      // To always get the updated rate, only store the iso code
+      const jsonStrValue = JSON.stringify(value.map(currency => currency.iso));
+      await AsyncStorage.setItem(`unitstool_currency_order`, jsonStrValue);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   const loadCurrencyFavorite = async () => {
@@ -117,7 +181,7 @@ const ConvertCurrencyScreen = ({ navigation }) => {
     try {
       const jsonStrValue = JSON.stringify(value);
       await AsyncStorage.setItem(`unitstool_currency_fxRate`, jsonStrValue);
-      setFxRate(value);
+      await loadCurrencyOrder(value);
     } catch (e) {
       console.error(e);
     }
@@ -146,12 +210,19 @@ const ConvertCurrencyScreen = ({ navigation }) => {
         />
         <Text>{t('update')}: {fxRate.day} ({t('sourceECB')})</Text>
         <View style={{flex: 1, width: '100%'}}>
-          <FlatList
-            data={fxRate.rates}
-            onRefresh={fetchFxRate}
-            refreshing={isRefreshing}
+          <DraggableFlatList
+            data={fxRate.rates ?? []}
+            refreshControl={
+              <RefreshControl
+                enabled={!isDragging}
+                onRefresh={fetchFxRate}
+                refreshing={isRefreshing}
+              />
+            }
             renderItem={renderItem}
             keyExtractor={keyExtractor}
+            onDragBegin={() => setIsDragging(true)}
+            onDragEnd={onDragEnd}
           />
         </View>
     </View>

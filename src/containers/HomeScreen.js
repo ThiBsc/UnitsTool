@@ -5,22 +5,11 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { useTheme } from '@rneui/themed';
 
 
-const HomeScreen = ({ navigation, conversionsData, saveData }) => {
+const HomeScreen = ({ navigation, conversionsData }) => {
 
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const { theme } = useTheme();
 
   const bgColor = theme.mode === 'light' ? theme.colors.disabled : theme.colors.background;
-
-  const refreshConversionJson = () => {
-    setIsRefreshing(true);
-
-    fetch('https://raw.githubusercontent.com/ThiBsc/UnitsTool/main/src/utils/conversion.json')
-      .then((response) => response.text())
-      .then((json) => saveData(json))
-      .catch((_) => console.error('Unable to fetch conversion.json'))
-      .finally(() => setIsRefreshing(false));
-  }
 
   const keyExtractor = (item, index) => item + index;
 
@@ -37,8 +26,6 @@ const HomeScreen = ({ navigation, conversionsData, saveData }) => {
         data={conversionsData}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        onRefresh={refreshConversionJson}
-        refreshing={isRefreshing}
         ListEmptyComponent={EmptyDataComponent}
         contentContainerStyle={conversionsData.length === 0 && styles.centerEmptySet}
       />

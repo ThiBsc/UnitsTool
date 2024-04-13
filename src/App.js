@@ -10,6 +10,7 @@ import RootNavigation from './containers/RootNavigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MenuProvider } from 'react-native-popup-menu';
 import { ThemeProvider, createTheme } from '@rneui/themed';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const theme = createTheme({});
 
@@ -20,7 +21,9 @@ const App = () => {
       <SafeAreaProvider>
         <ThemeProvider theme={theme}>
           <MenuProvider>
-            <RootNavigation/>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <RootNavigation/>
+            </GestureHandlerRootView>
           </MenuProvider>
         </ThemeProvider>
       </SafeAreaProvider>

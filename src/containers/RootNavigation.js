@@ -16,7 +16,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useTheme, useThemeMode } from '@rneui/themed';
 import { Alert } from 'react-native';
 import { Button } from '@rneui/base';
-import { version } from '../../package.json';
 
 i18n
   .use(initReactI18next)
@@ -38,7 +37,6 @@ const RootNavigation = ({ }) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
   const { mode, setMode } = useThemeMode();
-  const [usedConversions, setUsedConversions] = useState(conversion);
 
   const isDarkMode = mode === 'dark';
 
@@ -67,42 +65,6 @@ const RootNavigation = ({ }) => {
     }
   }
 
-  const isNewVersion = async () => {
-    const currentVersion = await AsyncStorage.getItem('unitstool_version');
-    const isNew = currentVersion === null || currentVersion < version;
-    if (isNew)
-      await AsyncStorage.setItem('unitstool_version', version);
-    return isNew;
-  }
-
-  const initData = async () => {
-    try {
-      // Force to use the conversion file of the last version after an update
-      if (await isNewVersion()) {
-        storeConversionData(JSON.stringify(conversion));
-      } else {
-        const value = await AsyncStorage.getItem('unitstool_conversionDataJson');
-        if(value === null) {
-          storeConversionData(JSON.stringify(conversion));
-        } else {
-          storeConversionData(value);
-        }
-      }
-    } catch(e) {
-      storeConversionData(JSON.stringify(conversion));
-    }
-  }
-
-  const storeConversionData = async (value) => {
-    try {
-      const jsonStrValue = value;
-      await AsyncStorage.setItem('unitstool_conversionDataJson', jsonStrValue);
-      setUsedConversions(JSON.parse(jsonStrValue));
-    } catch (e) {
-      console.error('Unable to save the conversion data');
-    }
-  }
-
   const displayCurrencyInfo = () => {
     Alert.alert(
       t('currencyInfoTitle'),
@@ -116,7 +78,6 @@ const RootNavigation = ({ }) => {
   useEffect(() => {
     if (!isInitialized.current) {
       initLanguage();
-      initData();
       initThemeMode();
     }
 
@@ -139,10 +100,10 @@ const RootNavigation = ({ }) => {
             )
           }}
         >
-          {props => <HomeScreen {...props} conversionsData={usedConversions} saveData={storeConversionData} />}
+          {props => <HomeScreen {...props} conversionsData={conversion} />}
         </Stack.Screen>
         {
-          usedConversions.map( (conv, index) => {
+          conversion.map( (conv, index) => {
           return <Stack.Screen
                     key={index}
                     name={conv.category}
