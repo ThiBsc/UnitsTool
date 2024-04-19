@@ -23,9 +23,6 @@ This application does not store or use any data from the user
 * Select your favorite unit by touching the star
 * Enter your value to convert
 
-> If the `conversion.json` file is updated, no need to update the application,  
-> You just have to Pull down the list in the `Home` screen 👇
-
 ## Contribute
 
 ### Helping for a beautiful app icon
