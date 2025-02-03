@@ -1,0 +1,76 @@
+{
+    "translation": {
+        "home": "Home",
+        "value": "Valore",
+        "units": "unità",
+        "currencies": "valute",
+        "lightmode": "Chiaro",
+        "darkmode": "Scuro",
+        "sourceECB": "sorgente BCE",
+        "update": "una volta al giorno",
+        "currencyInfoTitle": "Informazioni",
+        "currencyInfoMessage": "I dati provengono dalla Banca Centrale Europea e sono aggiornati una volta al giorno, fine settimana esclusi.\n\nÈ necessaria una connessione a internet per l'aggiornamento.",
+        "failToFetchCurrency": "Impossibile ottenere i tassi di conversione dalla BCE.\nVerificare la connessione",
+
+        "Distance": "Distanza",
+        "Weight": "Piedi",
+        "Temperature": "Temperatura",
+        "Liquid": "Liquidi",
+        "Surface": "Superficie",
+        "Volume": "Volume",
+        "Chemistry": "Chimica",
+        "Currency": "Valuta",
+
+        "Millimeter": "Millimetro",
+        "Centimeter": "Centimetro",
+        "Meter": "Metro",
+        "Kilometer": "Chilometro",
+        "Inch": "Pollice",
+        "Feet": "Piedi",
+        "Yard": "Iarda",
+        "Miles": "Miglia",
+        "Human height": "Altezza umana",
+
+        "Milligram": "Milligrammo",
+        "Gram": "Grammo",
+        "Kilogram": "Kilogrammo",
+        "Ton": "Tonnellata",
+        "Pounds": "Libbre",
+
+        "Celsius": "Celsius",
+        "Fahrenheit": "Fahrenheit",
+        "Kelvin": "Kelvin",
+
+        "Milliliter": "Millilitro",
+        "Centiliter": "Centilitro",
+        "Liter": "Litro",
+        "Cup": "Tazza",
+        "US fl oz": "Oncia fluida US",
+        "US Gallon": "Gallone US",
+
+        "Square centimeter": "Centimetro quadrato",
+        "Square meter": "Metro quadrato",
+        "Square feet": "Piede quadrato",
+        "Hectare": "Ettaro",
+        "Acre": "Acro",
+
+        "Cubic centimeter": "Centimetro cubo",
+        "Cubic meter": "Metro cubo",
+        "Cubic inch": "Pollice cubo",
+        "Cubic feet": "Piedi cubi",
+        "Cubic yard": "Iarda cubica",
+
+        "Millimole per liter (glucose)": "Millimole per litro (glucosio)",
+        "Milligram per deciliter (glucose)": "Milligrammo per decilitro (glucosio)",
+
+        "Euro": "Euro",
+        "Canadian dollar": "Dollaro canadese",
+        "US dollar": "Dollaro US",
+        "Pound sterling": "Sterlina inglese",
+        "Japanese yen": "Yen giapponese",
+        "Swiss franc": "Franco svizzero",
+        "Mexican peso": "Peso messicano",
+        "Australian dollar": "Dollaro australiano",
+        "Indian rupee": "Roupia indiana"
+    }
+}
