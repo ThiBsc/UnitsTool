@@ -13,5 +13,10 @@
         "iso": "es",
         "name": "Español",
         "emoji": "🇪🇸"
-    }
+    }, 
+    {
+        "iso": "it",
+        "name": "Italiano", 
+        "emoji": "🇮🇹"
+    } 
 ]
