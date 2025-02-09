@@ -10,6 +10,7 @@ import conversion from '../utils/conversion.json';
 import en from '../locales/en.json';
 import fr from '../locales/fr.json';
 import es from '../locales/es.json';
+import it from '../locales/it.json';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { NavigationContainer } from '@react-navigation/native';
@@ -23,7 +24,8 @@ i18n
     resources: {
       en,
       fr,
-      es
+      es,
+      it
     },
     fallbackLng: 'en',
     compatibilityJSON: 'v3'
