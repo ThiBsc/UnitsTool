@@ -1,7 +1,7 @@
 # UnitsTool
 [<img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">](https://liberapay.com/thibsc/donate) [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)   
 An application to convert units  
-Available languages : 🇬🇧, 🇫🇷, 🇪🇸
+Available languages : 🇬🇧, 🇫🇷, 🇪🇸, 🇮🇹
 
 [<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="75"/>](https://play.google.com/store/apps/details?id=com.unitstool)
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/packages/com.unitstool/)
