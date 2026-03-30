@@ -18,5 +18,10 @@
         "iso": "it",
         "name": "Italiano", 
         "emoji": "🇮🇹"
-    } 
+    },
+    {
+        "iso": "fa",
+        "name": "فارسی",
+        "emoji": "🇮🇷"
+    }
 ]

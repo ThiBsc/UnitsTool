@@ -1,0 +1,81 @@
+{
+    "translation": {
+        "home": "خانه",
+        "value": "مقدار",
+        "units": "یکا",
+        "currencies": "ارزها",
+        "lightmode": "حالت روشن",
+        "darkmode": "حالت تاریک",
+        "sourceECB": "از بانک اتحادیه اروپا",
+        "update": "به روز رسانی",
+        "currencyInfoTitle": "توجه",
+        "currencyInfoMessage": "این اطلاعات از بانک مرکزی اتحادیه ی اروپا گرفته و به صورت روزانه به روزرسانی میشود\n\nشما برای دسترسی به این داده ها به اینترنت نیاز دارید.",
+        "failToFetchCurrency": "دریافت نرخ ارز ناموفق بود.از داشتن اینترنت مطمئن شوید",
+
+        "Distance": "فاصله",
+        "Weight": "وزن",
+        "Temperature": "دما",
+        "Liquid": "مایعات",
+        "Surface": "مساحت",
+        "Volume": "حجم",
+        "Chemistry": "واحدهای شیمیایی",
+        "Currency": "ارز",
+        "Speed": "سرعت",
+
+        "Millimeter": "میلیمتر",
+        "Centimeter": "سانتیمتر",
+        "Meter": "متر",
+        "Kilometer": "کیلومتر",
+        "Inch": "اینچ",
+        "Feet": "پا",
+        "Yard": "یارد",
+        "Miles": "مایل",
+        "Human height": "قد انسان",
+
+        "Milligram": "میلی گرم",
+        "Gram": "گرم",
+        "Kilogram": "کیلوگرم",
+        "Ton": "تُن",
+        "Pounds": "پاند",
+
+        "Celsius": "سانتیگراد",
+        "Fahrenheit": "فارنهایت",
+        "Kelvin": "کلوین",
+
+        "Milliliter": "میلی-لیتر",
+        "Centiliter": "سانتی-لیتر",
+        "Liter": "لیتر",
+        "Cup": "پیمانه",
+        "US fl oz": "اونس مایعات آمریکا",
+        "US Gallon": "گالن آمریکا",
+
+        "Square centimeter": "سانتی متر مربع",
+        "Square meter": "متر مربع",
+        "Square feet": "فوت مربع",
+        "Hectare": "هکتار",
+        "Acre": "جریب",
+
+        "Cubic centimeter": "سانتی متر مکعب",
+        "Cubic meter": "متر مکعب",
+        "Cubic inch": "اینچ مکعب",
+        "Cubic feet": "فوت مکعب",
+        "Cubic yard": "یارد مکعب",
+
+        "Millimole per liter (glucose)": "میلی مول بر لیتر (گلوکز)",
+        "Milligram per deciliter (glucose)": "میلی گرم بر دسی لیتر (گلوکز)",
+
+        "Euro": "یورو",
+        "Canadian dollar": "دلار کانادا",
+        "US dollar": "دلار آمریکا",
+        "Pound sterling": "پوند انگلیس",
+        "Japanese yen": "ین ژاپن",
+        "Swiss franc": "فرانک سوئیس",
+        "Mexican peso": "پزوی مکزیک",
+        "Australian dollar": "دلار استرالیا",
+        "Indian rupee": "روپیه ی هند",
+
+        "Meter per second": "متر بر ثانیه",
+        "Kilometer per hour": "کیلومتر بر ساعت",
+        "Mile per hour": "مایل بر ساعت"
+    }
+}
