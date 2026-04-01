@@ -76,6 +76,9 @@
 
         "Meter per second": "متر بر ثانیه",
         "Kilometer per hour": "کیلومتر بر ساعت",
-        "Mile per hour": "مایل بر ساعت"
+        "Mile per hour": "مایل بر ساعت",
+        "Feet per second": "پا بر ثانیه",
+        "Kilometer per second": "کیلومتر بر ثانیه",
+        "Knot": "گره"
     }
 }
