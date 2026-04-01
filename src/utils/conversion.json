@@ -257,14 +257,27 @@
             {
                 "name": "Kilometer per hour",
                 "symbol": "km/h",
-                "formula": "* 3.6",
-                "reverseFormula":"/ 3.6"
+                "formula": "* 3.6"
             },
             {
                 "name": "Mile per hour",
                 "symbol": "mph",
-                "formula": "* 2.23694",
-                "reverseFormula": "/ 2.23694"
+                "formula": "* 2.23694"
+            },
+            {
+                "name": "Feet per second",
+                "symbol": "ft/s",
+                "formula": "* 3.28084"
+            },
+            {
+                "name": "Kilometer per second",
+                "symbol": "Km/s",
+                "formula": "* 0.001"
+            },
+            {
+                "name": "Knot",
+                "symbol": "kn",
+                "formula": "* 1.943844"
             }
         ]
     }
