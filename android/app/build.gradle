@@ -84,7 +84,7 @@ android {
         applicationId "com.unitstool"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9080
+        versionCode 9090
         versionName "1.0.17"
     }
     signingConfigs {
