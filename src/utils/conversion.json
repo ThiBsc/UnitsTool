@@ -271,7 +271,7 @@
             },
             {
                 "name": "Kilometer per second",
-                "symbol": "Km/s",
+                "symbol": "km/s",
                 "formula": "* 0.001"
             },
             {
