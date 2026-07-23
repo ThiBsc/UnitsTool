@@ -145,6 +145,16 @@
                 "formula": "* 33.814"
             },
             {
+                "name": "US Pint",
+                "symbol": "pt",
+                "formula": "* 2.11338"
+            },
+            {
+                "name": "US Quart",
+                "symbol": "qt",
+                "formula": "* 1.05669"
+            },
+            {
                 "name": "US Gallon",
                 "symbol": "gal",
                 "formula": "/ 3.785"
